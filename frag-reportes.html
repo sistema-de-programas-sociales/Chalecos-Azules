@@ -3,265 +3,942 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mapas</title>
+  <title>Reportes</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400..900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="assets/portal.css" />
 </head>
-<body class="portal-fragment page-mapas h-full">
+<body class="portal-fragment page-reportes h-full">
   <main class="portal-page">
     <div class="portal-container space-y-5">
       <header class="page-header">
         <div class="page-heading-group">
-          <h1 class="page-title">Cobertura por municipio</h1>
-          <p class="page-subtitle">Personal activo en junio, encuestas oficiales al 29 de mayo y casos que requieren revisión.</p>
+          <h1 class="page-title">Resultados y proyecciones 2026</h1>
+          <p class="page-subtitle">Datos observados, distribución territorial y tres métodos para estimar el cierre de 2026.</p>
         </div>
-        <p class="cutoff-badge">COBERTURA<br><strong>67 MUNICIPIOS</strong></p>
+        <p class="cutoff-badge">ENCUESTAS HASTA<br><strong>29 MAY 2026</strong></p>
       </header>
 
-      <!-- Resumen basado en el patrón Card Group de Metronic/KTUI: tres
-        unidades equivalentes, con la alerta diferenciada sin deformar la fila. -->
-      <section class="territory-kpis" aria-label="Resumen territorial">
-        <article class="territory-kpi">
-          <span class="territory-kpi__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M4 19.5V9.8L12 4l8 5.8v9.7M8.5 19.5v-5h7v5M3 19.5h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-              <p class="territory-kpi__label">Municipios del estado</p>
-            <p class="territory-kpi__metric"><strong>67</strong><span>municipios</span></p>
-              <p class="territory-kpi__meta"><i aria-hidden="true"></i>Universo territorial analizado</p>
+      <!-- 0. Franja de hitos — la historia completa en orden, antes de
+        cualquier gráfica. Cada celda es un stat-tile (no una gráfica con
+        eje), por eso no lleva hover: el dato completo ya está a la vista. -->
+      <div class="bg-white border border-gray-200 rounded-lg p-5">
+        <p class="text-base font-semibold text-gray-900">Cómo llegamos a la proyección 2026</p>
+        <p class="text-sm text-gray-500 mt-1 mb-3 max-w-3xl">Seis hitos explican el salto entre la meta original, el desempeño real y el ajuste de junio.</p>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-px bg-gray-200 rounded-md overflow-hidden">
+          <div class="bg-white p-3">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">1 · 2025</p>
+            <p class="text-lg font-bold text-gray-900 mt-1">34%</p>
+            <p class="text-[13px] text-gray-500 mt-1 leading-snug">147,100 de 436,901 encuestas: no se llegó a la meta</p>
           </div>
-        </article>
+          <div class="bg-white p-3">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">2 · Cierre 2025</p>
+            <p class="text-lg font-bold text-gray-900 mt-1">697</p>
+            <p class="text-[13px] text-gray-500 mt-1 leading-snug">chalecos activos en diciembre 2025</p>
+          </div>
+          <div class="bg-white p-3">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">3 · Enero 2026</p>
+            <p class="text-lg font-bold text-gray-900 mt-1">663</p>
+            <p class="text-[13px] text-gray-500 mt-1 leading-snug">chalecos activos: arranca el año</p>
+          </div>
+          <div class="bg-white p-3">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">4 · Mayo 2026</p>
+            <p class="text-lg font-bold text-gray-900 mt-1">717</p>
+            <p class="text-[13px] text-gray-500 mt-1 leading-snug">chalecos activos, 3,308 encuestas: el punto más alto del año</p>
+          </div>
+          <div class="bg-white p-3">
+            <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide">5 · Junio 2026</p>
+            <p class="text-lg font-bold text-gray-900 mt-1">312 <span class="text-sm font-semibold text-gray-500">(−56%)</span></p>
+            <p class="text-[13px] text-gray-500 mt-1 leading-snug">chalecos activos, 795 bajas confirmadas</p>
+          </div>
+          <div class="bg-portal-blue-open p-3">
+            <p class="text-xs font-semibold text-brand-blue uppercase tracking-wide">6 · Proyección 2026</p>
+            <p class="text-lg font-bold text-brand-blue mt-1">3 escenarios</p>
+            <p class="text-[13px] text-portal-muted mt-1 leading-snug">las estimaciones incorporan el ajuste de personal de junio</p>
+          </div>
+        </div>
+      </div>
 
-        <article class="territory-kpi territory-kpi--active">
-          <span class="territory-kpi__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M5 19v-7m7 7V5m7 14v-10M3 19.5h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
-          <div>
-              <p class="territory-kpi__label">Con personal activo</p>
-            <p class="territory-kpi__metric"><strong>27</strong><span>municipios</span></p>
-              <p class="territory-kpi__meta"><i aria-hidden="true"></i>Corte: 1Q junio de 2026</p>
+      <!-- 1. Chalecos y encuestas por quincena — 2 mini-líneas apareadas,
+        mismo eje de quincenas, nunca doble eje (2 gráficas separadas en vez
+        de 1 con 2 escalas). Sólido = dato real, punteado = proyección; en la
+        de encuestas se ven 2 punteados (los 2 escenarios de 2025)
+        separándose justo donde antes había un salto que no tenía sentido. -->
+      <div class="bg-white border border-gray-200 rounded-lg p-5">
+        <p class="text-base font-semibold text-gray-900">Chalecos y encuestas por quincena, 2026</p>
+        <p class="text-sm text-gray-500 mt-1 mb-2">Línea sólida: dato observado · línea punteada: estimación · el ajuste de junio aparece en ambas gráficas</p>
+        <div id="mini-wrap" class="relative mt-2">
+          <svg id="mini-chalecos-chart" viewBox="0 0 880 100" class="w-full h-24" role="img"
+            aria-label="Chalecos activos por quincena en 2026: sube de 702 a 717 en mayo, cae a 312 en junio, y se modela una recuperación gradual hacia 544 a fin de año.">
+          </svg>
+          <svg id="mini-encuestas-chart" viewBox="0 0 880 150" class="w-full h-36 mt-1" role="img"
+            aria-label="Encuestas por quincena en 2026: dato real hasta mayo, luego 2 proyecciones que ahora sí bajan junto con los chalecos en junio, en vez de subir.">
+          </svg>
+          <div id="mini-tooltip" class="hidden absolute pointer-events-none bg-gray-900 text-white text-sm rounded-md px-2.5 py-1.5 shadow-lg whitespace-nowrap z-10">
+            <p data-role="q" class="font-medium"></p>
+            <p data-role="chalecos" class="text-gray-300"></p>
+            <p data-role="sim" class="text-gray-300"></p>
+            <p data-role="real" class="font-semibold"></p>
           </div>
-        </article>
+        </div>
+        <div class="flex flex-wrap gap-x-4 gap-y-1 mt-3 text-sm text-gray-500">
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 bg-brand-blue inline-block"></span>Chalecos activos</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 inline-block" style="border-top:2px dashed #76b9dc"></span>Encuestas · meta simulada 2025</span>
+          <span class="inline-flex items-center gap-1.5"><span class="w-3 h-0.5 inline-block" style="border-top:2px dashed #0a6ab7"></span>Encuestas · logrado 2025</span>
+        </div>
+      </div>
 
-        <article class="territory-kpi territory-kpi--attention">
-          <span class="territory-kpi__icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M12 8v5m0 3.5v.1M10.2 4.9 3.6 17a2 2 0 0 0 1.8 3h13.2a2 2 0 0 0 1.8-3L13.8 4.9a2 2 0 0 0-3.6 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </span>
+      <!-- 2. Rango de la proyección anual — los 3 escenarios + lo ya real,
+        ya con la baja de junio incorporada en los 2 que la necesitan. -->
+      <section class="report-viz report-viz--range">
+        <div class="report-viz__head">
           <div>
-              <p class="territory-kpi__label">Revisión de reporte</p>
-            <p class="territory-kpi__metric"><strong>13</strong><span>municipios</span></p>
-              <p class="territory-kpi__meta"><i aria-hidden="true"></i>Personal activo y 0 encuestas oficiales</p>
+            <h2>Rango de la proyección anual 2026</h2>
+            <p>Un dato observado y tres estimaciones anuales. Son referencias distintas, no resultados equivalentes.</p>
           </div>
-        </article>
+          <span class="report-viz__unit">encuestas</span>
+        </div>
+
+        <div id="rango-wrap" class="relative mt-2">
+          <svg id="rango-chart" viewBox="0 0 820 250" class="report-chart report-chart--range" role="img"
+            aria-label="Rango de la proyección anual 2026: real al corte, 20,634; según el ritmo observado en 2026, 36,764; según lo logrado en 2025, 46,586; según la meta simulada de 2025, 61,520.">
+          </svg>
+          <div id="rango-tooltip" class="hidden absolute pointer-events-none bg-gray-900 text-white text-sm rounded-md px-2.5 py-1.5 shadow-lg whitespace-nowrap z-10">
+            <p data-role="label" class="font-medium"></p>
+            <p data-role="value" class="font-semibold"></p>
+          </div>
+        </div>
+
+        <p class="report-viz__note"><span aria-hidden="true"></span>La referencia principal usa lo que cada municipio logró realmente en 2025, no su meta asignada.</p>
       </section>
 
-      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">
-        <!-- LIENZO DE MAPA: esquemático, sin coordenadas reales — a propósito,
-          para no fingir precisión geográfica que todavía no existe. Pines
-          solo para los 4 municipios con más chalecos, en posiciones
-          aproximadas dentro del estado (Juárez norte, capital centro-norte,
-          Cuauhtémoc centro-oeste, Delicias centro-sur), declaradas como
-          referenciales en el pie del panel. -->
-        <div class="lg:col-span-2 bg-white border border-gray-200 rounded-lg p-5">
-          <div class="flex items-baseline justify-between flex-wrap gap-2">
-            <p class="text-base font-semibold text-gray-900">Esquema de cobertura</p>
-            <span class="text-sm text-gray-400">Chihuahua, México</span>
-          </div>
-
-          <div
-            id="map-canvas"
-            class="relative mt-3 rounded-lg border border-gray-200 overflow-hidden"
-            style="aspect-ratio: 4 / 3; background-image: radial-gradient(circle, rgba(4,77,152,.17) 1px, transparent 1px); background-size: 22px 22px; background-color: #f7f9fb;"
-          >
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center px-6 pointer-events-none">
-              <svg class="w-9 h-9 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z" />
-                <circle cx="12" cy="9.5" r="2.3" />
-              </svg>
-              <p class="text-sm font-medium text-gray-400 mt-2">Ubicación aproximada</p>
-              <p class="text-sm text-gray-300 mt-0.5">Cuatro municipios con mayor personal activo</p>
-            </div>
-
-            <!-- Pines esquemáticos, clicables — sincronizan con el ranking -->
-            <button type="button" data-pin="Juarez" style="left: 22%; top: 12%;" class="map-pin absolute -translate-x-1/2 -translate-y-full flex flex-col items-center group">
-              <span class="pin-dot w-3.5 h-3.5 rounded-full bg-brand-blue border-2 border-white shadow transition-transform"></span>
-              <span class="text-xs font-medium text-gray-600 bg-white/90 rounded px-1.5 py-0.5 mt-1 shadow-sm whitespace-nowrap">Juárez</span>
-            </button>
-            <button type="button" data-pin="Chihuahua" style="left: 46%; top: 38%;" class="map-pin absolute -translate-x-1/2 -translate-y-full flex flex-col items-center group">
-              <span class="pin-dot w-3.5 h-3.5 rounded-full bg-brand-blue border-2 border-white shadow transition-transform"></span>
-              <span class="text-xs font-medium text-gray-600 bg-white/90 rounded px-1.5 py-0.5 mt-1 shadow-sm whitespace-nowrap">Chihuahua</span>
-            </button>
-            <button type="button" data-pin="Cuauhtemoc" style="left: 28%; top: 46%;" class="map-pin absolute -translate-x-1/2 -translate-y-full flex flex-col items-center group">
-              <span class="pin-dot w-3.5 h-3.5 rounded-full bg-brand-blue border-2 border-white shadow transition-transform"></span>
-              <span class="text-xs font-medium text-gray-600 bg-white/90 rounded px-1.5 py-0.5 mt-1 shadow-sm whitespace-nowrap">Cuauhtémoc</span>
-            </button>
-            <button type="button" data-pin="Delicias" style="left: 50%; top: 66%;" class="map-pin absolute -translate-x-1/2 -translate-y-full flex flex-col items-center group">
-              <span class="pin-dot w-3.5 h-3.5 rounded-full bg-brand-blue border-2 border-white shadow transition-transform"></span>
-              <span class="text-xs font-medium text-gray-600 bg-white/90 rounded px-1.5 py-0.5 mt-1 shadow-sm whitespace-nowrap">Delicias</span>
-            </button>
-          </div>
-          <p class="text-sm text-gray-400 mt-2">Esquema de orientación, no mapa georreferenciado. Las posiciones son aproximadas.</p>
-
-          <!-- Detalle del municipio seleccionado — mismo patrón de panel
-            compartido que el día seleccionado en Calendario -->
-          <div id="map-detail" class="mt-4 pt-4 border-t border-gray-100 flex items-start gap-3">
-            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center shrink-0">
-              <svg class="w-4 h-4 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 21s7-6.5 7-11.5A7 7 0 0 0 5 9.5C5 14.5 12 21 12 21Z" />
-                <circle cx="12" cy="9.5" r="2.3" />
-              </svg>
-            </div>
-            <div>
-              <p id="map-detail-title" class="text-base font-semibold text-gray-900">Selecciona un municipio</p>
-              <p id="map-detail-text" class="text-sm text-gray-500 mt-0.5">Selecciona un punto o una fila de la lista para ver el detalle.</p>
-            </div>
-          </div>
+      <!-- 2.5 NUEVO — explicación en lenguaje simple de las 3 fórmulas,
+        para que el panel de arriba no quede como una caja negra. -->
+      <details class="method-disclosure bg-white border border-gray-200 rounded-lg p-5">
+        <summary class="flex cursor-pointer items-center justify-between gap-4">
+          <span><strong class="block text-base text-gray-900">Cómo se calculan las estimaciones</strong><small class="mt-1 block text-gray-500">Usan fuentes y periodos distintos; por eso dan resultados diferentes.</small></span>
+          <span class="method-disclosure__action">Ver detalle</span>
+        </summary>
+        <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div class="bg-gray-50 rounded-md p-3"><p class="text-sm font-semibold text-gray-900">Meta simulada 2025</p><p class="text-sm text-gray-500 mt-1">Aplica la meta asignada de 2025 a 19 quincenas comparables. Es la referencia más alta.</p></div>
+          <div class="bg-portal-blue-open rounded-md p-3"><p class="text-sm font-semibold text-brand-blue">Logrado en 2025</p><p class="text-sm text-gray-500 mt-1">Aplica el resultado real de cada municipio en 2025 a esas mismas 19 quincenas. Es la referencia principal.</p></div>
+          <div class="bg-gray-50 rounded-md p-3"><p class="text-sm font-semibold text-gray-900">Ritmo observado en 2026</p><p class="text-sm text-gray-500 mt-1">Suma las 20,634 encuestas oficiales al corte y estima las 14 quincenas restantes.</p></div>
         </div>
+        <p class="mt-4 text-sm leading-relaxed text-gray-500"><strong class="text-gray-700">Importante:</strong> las dos referencias basadas en 2025 cubren 19 quincenas comparables; la de ritmo 2026 parte del acumulado oficial y agrega 14 quincenas futuras. Úsalas para comparar supuestos, no como si fueran una misma fórmula.</p>
+      </details>
 
-        <!-- RANKING: los 27 municipios con chalecos activos reales, ordenable
-          por 3 vistas. Datos de datos/_municipios_2026.json — no es relleno. -->
+      <!-- 3. Resumen del ritmo — el panel que solo vivía en Excel, nunca en
+        la página, ahora como tabla real con cada fila explicada. -->
+      <div class="bg-white border border-gray-200 rounded-lg p-5">
+        <p class="text-base font-semibold text-gray-900">Resumen: el ritmo detrás de cada proyección</p>
+        <p class="text-sm text-gray-500 mt-1 mb-4">Cómo se reparte el total anual entre quincenas y chalecos activos, en los 2 escenarios que sí parten de 2025</p>
+        <div class="overflow-x-auto">
+          <table class="w-full text-base border-collapse min-w-[420px]">
+            <thead>
+              <tr class="text-left text-sm text-gray-500 border-b border-gray-200">
+                <th class="py-2 pr-2 font-medium">Dato</th>
+                <th class="py-2 px-2 font-medium text-right">Según la meta simulada 2025</th>
+                <th class="py-2 pl-2 font-medium text-right">Según lo logrado en 2025</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr>
+                <td class="py-2 pr-2 text-gray-500">Encuestas por quincena, en promedio</td>
+                <td class="py-2 px-2 text-right font-semibold text-gray-900 tabular-nums">3,238</td>
+                <td class="py-2 pl-2 text-right font-semibold text-gray-900 tabular-nums">2,453</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-2 text-gray-500">Chalecos activos, en promedio del año</td>
+                <td class="py-2 px-2 text-right font-semibold text-gray-900 tabular-nums">581</td>
+                <td class="py-2 pl-2 text-right font-semibold text-gray-900 tabular-nums">581</td>
+              </tr>
+              <tr>
+                <td class="py-2 pr-2 text-gray-500">Encuestas por chaleco, aproximado</td>
+                <td class="py-2 px-2 text-right font-semibold text-gray-900 tabular-nums">6</td>
+                <td class="py-2 pl-2 text-right font-semibold text-gray-900 tabular-nums">4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-sm text-gray-500 mt-4 leading-relaxed">Los promedios integran datos observados y una recuperación estimada; por eso no equivalen a los 312 activos del corte de personal de junio.</p>
+      </div>
+
+      <!-- 4. Municipios por tamaño de proyección + 5. Cobertura real -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
         <div class="bg-white border border-gray-200 rounded-lg p-5">
-          <p class="mb-2 text-sm font-semibold text-gray-700">Ordenar municipios por</p>
-          <div class="flex items-center gap-1 bg-portal-blue-open rounded-lg p-1" role="group" aria-label="Criterio para ordenar municipios">
-            <button type="button" data-tab="chalecos" class="tab-btn flex-1 text-sm font-medium rounded-md px-2.5 py-1.5 transition-colors">Chalecos</button>
-            <button type="button" data-tab="coincidencia" class="tab-btn flex-1 text-sm font-medium rounded-md px-2.5 py-1.5 transition-colors">Coincidencia</button>
-            <button type="button" data-tab="alertas" class="tab-btn flex-1 text-sm font-medium rounded-md px-2.5 py-1.5 transition-colors">Alertas</button>
-          </div>
-          <p class="mt-2 text-sm leading-relaxed text-gray-500"><strong class="text-gray-700">Coincidencia</strong> compara el total oficial con el archivo detallado; no es avance contra la proyección.</p>
+          <p class="text-base font-semibold text-gray-900">Municipios por tamaño de proyección 2026</p>
+          <p class="text-sm text-gray-500 mt-1 mb-1">Los 67 municipios, agrupados por su proyección anual (según lo logrado en 2025)</p>
 
-          <ul id="ranking-list" class="mt-3 max-h-96 overflow-y-auto divide-y divide-gray-100"></ul>
+          <div id="histo-wrap" class="relative mt-2">
+            <svg id="histo-chart" viewBox="0 0 420 190" class="w-full h-44" role="img"
+              aria-label="Municipios por tamaño de proyección 2026: 15 sin proyección, 34 de 1 a 100, 11 de 101 a 500, 3 de 501 a 2,000, 4 de más de 2,000.">
+            </svg>
+            <div id="histo-tooltip" class="hidden absolute pointer-events-none bg-gray-900 text-white text-sm rounded-md px-2.5 py-1.5 shadow-lg whitespace-nowrap z-10">
+              <p data-role="label" class="font-medium"></p>
+              <p data-role="value" class="font-semibold"></p>
+            </div>
+          </div>
+
+          <p class="text-sm text-gray-500 mt-1">
+            60 municipios (90%) proyectan menos de 500 encuestas en todo 2026: casi toda la actividad se concentra
+            en un grupo chico de municipios grandes.
+          </p>
         </div>
+
+        <div class="bg-white border border-gray-200 rounded-lg p-5">
+          <p class="text-base font-semibold text-gray-900">Cruce operativo: personal y encuestas</p>
+          <p class="text-sm text-gray-500 mt-1 mb-4">Compara el personal activo de junio con las encuestas oficiales acumuladas al 29 de mayo en los 67 municipios</p>
+          <div id="cobertura-wrap" class="relative">
+            <svg id="cobertura-chart" viewBox="0 0 420 60" class="w-full h-14" role="img"
+              aria-label="Cobertura: 14 municipios con chalecos y encuestas, 13 con chalecos pero sin encuestas, 10 con encuestas pero sin chalecos, 30 sin ninguno.">
+            </svg>
+            <div id="cobertura-tooltip" class="hidden absolute pointer-events-none bg-gray-900 text-white text-sm rounded-md px-2.5 py-1.5 shadow-lg whitespace-nowrap z-10">
+              <p data-role="label" class="font-medium"></p>
+              <p data-role="value" class="font-semibold"></p>
+            </div>
+          </div>
+          <div id="cobertura-legend" class="grid grid-cols-2 gap-x-4 gap-y-2 mt-4 text-sm"></div>
+          <p class="text-sm text-gray-500 mt-4">
+            10 municipios reportaron encuestas antes del ajuste presupuestal, pero no tienen personal activo en el corte de junio.
+            Sus encuestas siguen contando en el acumulado oficial.
+          </p>
+        </div>
+      </div>
+
+      <!-- 6. 13 municipios con personal activo y cero encuestas + 7. Scatter -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        <div class="bg-white border border-gray-200 rounded-lg p-5">
+          <p class="text-base font-semibold text-gray-900">13 municipios con personal activo y cero encuestas</p>
+          <p class="text-sm text-gray-500 mt-1 mb-1">Tienen personal activo en junio, pero no registran encuestas oficiales al corte del 29 de mayo</p>
+          <div id="anomalia-wrap" class="relative mt-2">
+            <svg id="anomalia-chart" viewBox="0 0 420 230" class="w-full h-56" role="img"
+              aria-label="13 municipios con chalecos activos y cero encuestas reportadas, de Guachochi con 7 chalecos a Uruachi con 1.">
+            </svg>
+            <div id="anomalia-tooltip" class="hidden absolute pointer-events-none bg-gray-900 text-white text-sm rounded-md px-2.5 py-1.5 shadow-lg whitespace-nowrap z-10">
+              <p data-role="label" class="font-medium"></p>
+              <p data-role="value" class="font-semibold"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-lg p-5">
+          <p class="text-base font-semibold text-gray-900">Encuestas al corte vs. proyección anual</p>
+          <p class="text-sm text-gray-500 mt-1 mb-1">Escala logarítmica en ambos ejes (el rango va de 0 a 19,601) · cada punto es un municipio</p>
+          <div id="scatter-wrap" class="relative mt-2">
+            <svg id="scatter-chart" viewBox="0 0 420 260" class="w-full h-64" role="img"
+              aria-label="Dispersión de los 67 municipios: encuestas al corte en el eje horizontal, proyección anual 2026 en el eje vertical, escala logarítmica.">
+            </svg>
+            <div id="scatter-tooltip" class="hidden absolute pointer-events-none bg-gray-900 text-white text-sm rounded-md px-2.5 py-1.5 shadow-lg whitespace-nowrap z-10">
+              <p data-role="label" class="font-medium"></p>
+              <p data-role="value" class="font-semibold"></p>
+              <p data-role="value2" class="text-gray-300"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Avance real hacia la proyección -->
+      <section class="report-viz report-viz--avance">
+        <div class="report-viz__head">
+          <div>
+            <h2>Avance real hacia la proyección, por municipio</h2>
+            <p>Distribución de los 52 municipios con proyección 2026, al corte del 29 de mayo.</p>
+          </div>
+          <span class="report-viz__unit">52 municipios</span>
+        </div>
+        <div class="advance-analysis">
+          <div id="avance-wrap" class="relative min-w-0">
+            <svg id="avance-chart" viewBox="0 0 760 250" class="report-chart report-chart--avance" role="img"
+              aria-label="Distribución de avance real hacia la proyección 2026, por rangos de porcentaje.">
+            </svg>
+            <div id="avance-tooltip" class="hidden absolute pointer-events-none bg-gray-900 text-white text-sm rounded-md px-2.5 py-1.5 shadow-lg whitespace-nowrap z-10">
+              <p data-role="label" class="font-medium"></p>
+              <p data-role="value" class="font-semibold"></p>
+            </div>
+          </div>
+          <aside class="advance-insight" aria-label="Lectura ejecutiva del avance">
+            <p class="advance-insight__eyebrow">Lectura ejecutiva</p>
+            <div class="advance-insight__metric">
+              <strong>33</strong>
+              <span>municipios siguen por debajo del 25% de su proyección.</span>
+            </div>
+            <div class="advance-insight__metric advance-insight__metric--positive">
+              <strong>6</strong>
+              <span>municipios ya superaron el total anual proyectado.</span>
+            </div>
+            <p class="advance-insight__foot">La concentración en el primer rango exige distinguir rezago real de municipios cuya proyección anual es baja.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Tabla accesible — zebra, hover, encabezados ordenables, alineación
+        tabular, con leyenda de qué significa cada columna. Colapsada por
+        defecto: ya no es la única forma de ver los 67. -->
+      <div class="bg-white border border-gray-200 rounded-lg p-5">
+        <details>
+          <summary class="cursor-pointer select-none flex items-baseline justify-between flex-wrap gap-1">
+            <span class="text-base font-semibold text-gray-900 hover:text-gray-700">Tabla completa: 67 municipios</span>
+            <span class="text-sm text-gray-500">columnas 2026 primero · selecciona un encabezado para ordenar</span>
+          </summary>
+          <div class="mt-3 mb-3 bg-gray-50 rounded-md p-3 text-sm text-gray-500 space-y-1">
+            <p><span class="font-medium text-gray-700">Chalecos activos 2026:</span> personal activo en ese municipio al corte de la primera quincena de junio.</p>
+            <p><span class="font-medium text-gray-700">Encuestas al corte:</span> encuestas oficiales acumuladas por ese municipio hasta el 29 de mayo de 2026.</p>
+            <p><span class="font-medium text-gray-700">Proyección anual 2026:</span> cuántas encuestas se espera que levante en todo 2026, según lo que ese municipio logró en 2025.</p>
+            <p><span class="font-medium text-gray-700">Según la meta simulada 2025 (contexto):</span> estimación que usa la meta de 2025 en vez de lo logrado. Es la referencia más alta y se muestra solo como contexto.</p>
+            <p><span class="font-medium text-gray-700">% de meta 2025 lograda (contexto):</span> qué tanto de su propia meta 2025 alcanzó ese municipio ese año. Entre más bajo, más se separan sus 2 proyecciones.</p>
+            <p><span class="font-medium text-gray-700">Nota de conciliación:</span> el total estatal oficial es 312. El detalle municipal suma 313 por el redondeo proporcional; se usa para distribución, no para sustituir el total oficial.</p>
+          </div>
+          <div class="max-h-96 overflow-y-auto border border-gray-100 rounded-md">
+            <table class="w-full text-left border-collapse">
+              <thead class="sticky top-0 bg-gray-50 text-gray-500 uppercase text-xs tracking-wide">
+                <tr id="reportes-tabla-head"></tr>
+              </thead>
+              <tbody id="reportes-tabla-body" class="divide-y divide-gray-100"></tbody>
+            </table>
+          </div>
+        </details>
       </div>
     </div>
   </main>
 
   <script>
     (function () {
-      // Municipios con al menos 1 chaleco activo, de datos/_municipios_2026.json
-      // (67 municipios totales, 27 activos, 13 con bandera "cero encuestas
-      // reportadas pese a tener chalecos"). coincidencia: relación entre el
-      // total oficial agregado y el archivo detallado asignado por municipio.
-      var municipios = [
-        { m: "Chihuahua", chalecos: 139, coincidencia: 100, alerta: false },
-        { m: "Juárez", chalecos: 55, coincidencia: 86, alerta: false },
-        { m: "Delicias", chalecos: 13, coincidencia: 81, alerta: false },
-        { m: "Cuauhtémoc", chalecos: 12, coincidencia: 83, alerta: false },
-        { m: "Nuevo Casas Grandes", chalecos: 10, coincidencia: 86, alerta: false },
-        { m: "Guadalupe y Calvo", chalecos: 8, coincidencia: 90, alerta: false },
-        { m: "Guachochi", chalecos: 7, coincidencia: null, alerta: true },
-        { m: "Camargo", chalecos: 6, coincidencia: 86, alerta: false },
-        { m: "Madera", chalecos: 6, coincidencia: 100, alerta: false },
-        { m: "Saucillo", chalecos: 5, coincidencia: 62, alerta: false },
-        { m: "Guerrero", chalecos: 5, coincidencia: 100, alerta: false },
-        { m: "Namiquipa", chalecos: 5, coincidencia: null, alerta: true },
-        { m: "Urique", chalecos: 5, coincidencia: null, alerta: true },
-        { m: "Meoqui", chalecos: 4, coincidencia: null, alerta: true },
-        { m: "Ojinaga", chalecos: 4, coincidencia: null, alerta: true },
-        { m: "Jiménez", chalecos: 3, coincidencia: 100, alerta: false },
-        { m: "Balleza", chalecos: 3, coincidencia: null, alerta: true },
-        { m: "Ascensión", chalecos: 3, coincidencia: null, alerta: true },
-        { m: "Rosales", chalecos: 3, coincidencia: null, alerta: true },
-        { m: "Buenaventura", chalecos: 3, coincidencia: null, alerta: true },
-        { m: "Bocoyna", chalecos: 3, coincidencia: 100, alerta: false },
-        { m: "Casas Grandes", chalecos: 3, coincidencia: null, alerta: true },
-        { m: "Satevó", chalecos: 3, coincidencia: null, alerta: true },
-        { m: "Julimes", chalecos: 2, coincidencia: 100, alerta: false },
-        { m: "Matamoros", chalecos: 1, coincidencia: null, alerta: true },
-        { m: "Uruachi", chalecos: 1, coincidencia: null, alerta: true },
-        { m: "Ocampo", chalecos: 1, coincidencia: 100, alerta: false }
-      ];
-      var pinNombres = { Juárez: "Juarez", Chihuahua: "Chihuahua", Cuauhtémoc: "Cuauhtemoc", Delicias: "Delicias" };
+      // Datos de "Proyección por Municipio 2026" (Proyecciones 2026 - Encuestas
+      // y Chalecos Azules.xlsx, v5 — fórmula de las 14 quincenas futuras anclada
+      // en el último dato real, corrige el salto hacia arriba que había en
+      // junio). Una sola fuente para el bullet-chart de los 67, la tabla y el
+      // histograma (los buckets se recalculan de aquí).
+      var municipios = [{"m": "Cuauhtemoc", "c26": 12, "rs": 16307, "proy": 19601, "ratio": 1.3501567776169803, "rc": 7608}, {"m": "Delicias", "c26": 13, "rs": 17068, "proy": 13783, "ratio": 0.6375278988202785, "rc": 7021}, {"m": "Saucillo", "c26": 5, "rs": 3252, "proy": 3735, "ratio": 1.2063537492844878, "rc": 582}, {"m": "Camargo", "c26": 6, "rs": 3199, "proy": 2359, "ratio": 0.5002234636871509, "rc": 1735}, {"m": "Chihuahua", "c26": 139, "rs": 7989, "proy": 1680, "ratio": 0.1926899988472827, "rc": 322}, {"m": "Juarez", "c26": 55, "rs": 924, "proy": 821, "ratio": 0.8170815885141043, "rc": 688}, {"m": "La Cruz", "c26": 0, "rs": 873, "proy": 711, "ratio": 0.6356701779876498, "rc": 381}, {"m": "Coronado", "c26": 0, "rs": 369, "proy": 389, "ratio": 1.2001258653241031, "rc": 318}, {"m": "Allende", "c26": 0, "rs": 312, "proy": 365, "ratio": 1.2820444915254237, "rc": 261}, {"m": "Jimenez", "c26": 3, "rs": 370, "proy": 357, "ratio": 0.9575016097875081, "rc": 377}, {"m": "San Francisco De Conchos", "c26": 0, "rs": 302, "proy": 228, "ratio": 0.45952109464082097, "rc": 224}, {"m": "Lopez", "c26": 0, "rs": 247, "proy": 223, "ratio": 0.7207947927372388, "rc": 260}, {"m": "Hidalgo Del Parral", "c26": 0, "rs": 1077, "proy": 186, "ratio": 0.16988717416677473, "rc": 2}, {"m": "Guachochi", "c26": 7, "rs": 447, "proy": 173, "ratio": 0.39323943661971833, "rc": 0}, {"m": "Guerrero", "c26": 5, "rs": 537, "proy": 170, "ratio": 0.18105055378879262, "rc": 258}, {"m": "Balleza", "c26": 3, "rs": 260, "proy": 168, "ratio": 0.6404358353510896, "rc": 0}, {"m": "Nuevo Casas Grandes", "c26": 10, "rs": 266, "proy": 135, "ratio": 0.06617915904936014, "rc": 139}, {"m": "Meoqui", "c26": 4, "rs": 335, "proy": 120, "ratio": 0.3541854185418542, "rc": 0}, {"m": "Julimes", "c26": 2, "rs": 201, "proy": 95, "ratio": 0.43401216609362603, "rc": 162}, {"m": "Ascension", "c26": 3, "rs": 295, "proy": 92, "ratio": 0.3064820641913153, "rc": 0}, {"m": "Bocoyna", "c26": 3, "rs": 241, "proy": 82, "ratio": 0.15307342740971058, "rc": 79}, {"m": "Matamoros", "c26": 1, "rs": 147, "proy": 68, "ratio": 0.46219512195121953, "rc": 0}, {"m": "Ahumada", "c26": 0, "rs": 186, "proy": 66, "ratio": 0.1744186046511628, "rc": 39}, {"m": "Madera", "c26": 6, "rs": 609, "proy": 65, "ratio": 0.0804296346414073, "rc": 61}, {"m": "Morelos", "c26": 0, "rs": 78, "proy": 64, "ratio": 0.814621409921671, "rc": 0}, {"m": "Guadalupe Y Calvo", "c26": 8, "rs": 106, "proy": 58, "ratio": 0.13585502310873268, "rc": 112}, {"m": "Guazapares", "c26": 0, "rs": 147, "proy": 54, "ratio": 0.35633116883116883, "rc": 0}, {"m": "Cusihuiriachi", "c26": 0, "rs": 226, "proy": 54, "ratio": 0.23362096516458933, "rc": 0}, {"m": "Dr. Belisario Dominguez", "c26": 0, "rs": 147, "proy": 52, "ratio": 0.3315764254911356, "rc": 0}, {"m": "Namiquipa", "c26": 5, "rs": 447, "proy": 51, "ratio": 0.1075279552715655, "rc": 0}, {"m": "Rosales", "c26": 3, "rs": 260, "proy": 51, "ratio": 0.19004837595024188, "rc": 0}, {"m": "Buenaventura", "c26": 3, "rs": 295, "proy": 43, "ratio": 0.15817535545023698, "rc": 0}, {"m": "Urique", "c26": 5, "rs": 335, "proy": 41, "ratio": 0.12111152096397393, "rc": 0}, {"m": "Moris", "c26": 0, "rs": 226, "proy": 41, "ratio": 0.1727245419044758, "rc": 0}, {"m": "Ojinaga", "c26": 4, "rs": 260, "proy": 40, "ratio": 0.14645703209132027, "rc": 0}, {"m": "San Francisco Del Oro", "c26": 0, "rs": 40, "proy": 40, "ratio": 1.1356837606837606, "rc": 0}, {"m": "Gran Morelos", "c26": 0, "rs": 109, "proy": 40, "ratio": 0.3257033857892227, "rc": 0}, {"m": "Galeana", "c26": 0, "rs": 147, "proy": 38, "ratio": 0.23738317757009345, "rc": 0}, {"m": "Aquiles Serdan", "c26": 0, "rs": 109, "proy": 27, "ratio": 0.22941176470588234, "rc": 0}, {"m": "Casas Grandes", "c26": 3, "rs": 147, "proy": 27, "ratio": 0.16901004304160688, "rc": 0}, {"m": "Carichi", "c26": 0, "rs": 147, "proy": 27, "ratio": 0.22209026128266032, "rc": 0}, {"m": "Santa Isabel", "c26": 0, "rs": 147, "proy": 27, "ratio": 0.15729606759831005, "rc": 0}, {"m": "Satevo", "c26": 3, "rs": 109, "proy": 27, "ratio": 0.22826552462526767, "rc": 0}, {"m": "Rosario", "c26": 0, "rs": 109, "proy": 26, "ratio": 0.18819403857393338, "rc": 0}, {"m": "Aldama", "c26": 0, "rs": 109, "proy": 14, "ratio": 0.1544502617801047, "rc": 0}, {"m": "Janos", "c26": 0, "rs": 260, "proy": 14, "ratio": 0.059950645957323266, "rc": 1}, {"m": "Batopilas De Manuel Gomez Morin", "c26": 0, "rs": 109, "proy": 14, "ratio": 0.1640378548895899, "rc": 0}, {"m": "Bachiniva", "c26": 0, "rs": 226, "proy": 14, "ratio": 0.06464864864864865, "rc": 0}, {"m": "Valle De Zaragoza", "c26": 0, "rs": 78, "proy": 14, "ratio": 0.21824423737126042, "rc": 0}, {"m": "Uruachi", "c26": 1, "rs": 109, "proy": 14, "ratio": 0.12714285714285714, "rc": 0}, {"m": "Riva Palacio", "c26": 0, "rs": 1, "proy": 1, "ratio": 0.33668954751762986, "rc": 1}, {"m": "Chinipas", "c26": 0, "rs": 148, "proy": 1, "ratio": 0.03346203346203346, "rc": 1}, {"m": "Santa Barbara", "c26": 0, "rs": 109, "proy": 0, "ratio": 0.0, "rc": 0}, {"m": "Gomez Farias", "c26": 0, "rs": 186, "proy": 0, "ratio": 0.0, "rc": 0}, {"m": "Ocampo", "c26": 1, "rs": 260, "proy": 0, "ratio": 0.01629026286560533, "rc": 2}, {"m": "Ignacio Zaragoza", "c26": 0, "rs": 109, "proy": 0, "ratio": 0.04146537842190016, "rc": 0}, {"m": "Temosachic", "c26": 0, "rs": 147, "proy": 0, "ratio": 0.00391717963066592, "rc": 0}, {"m": "Praxedis G. Guerrero", "c26": 0, "rs": 0, "proy": 0, "ratio": 0.33668954751762986, "rc": 0}, {"m": "Guadalupe", "c26": 0, "rs": 0, "proy": 0, "ratio": 0.33668954751762986, "rc": 0}, {"m": "Nonoava", "c26": 0, "rs": 78, "proy": 0, "ratio": 0.07852882703777336, "rc": 0}, {"m": "Matachi", "c26": 0, "rs": 109, "proy": 0, "ratio": 0.02848242100578549, "rc": 0}, {"m": "San Francisco De Borja", "c26": 0, "rs": 78, "proy": 0, "ratio": 0.07348938486663037, "rc": 0}, {"m": "El Tule", "c26": 0, "rs": 0, "proy": 0, "ratio": 0.33668954751762986, "rc": 0}, {"m": "Manuel Benavides", "c26": 0, "rs": 0, "proy": 0, "ratio": 0.33668954751762986, "rc": 0}, {"m": "Coyame Del Sotol", "c26": 0, "rs": 0, "proy": 0, "ratio": 0.33668954751762986, "rc": 0}, {"m": "Maguarichi", "c26": 0, "rs": 0, "proy": 0, "ratio": 0.33668954751762986, "rc": 0}, {"m": "Huejotitan", "c26": 0, "rs": 0, "proy": 0, "ratio": 0.0, "rc": 0}];
 
-      var list = document.getElementById("ranking-list");
-      var tabs = document.querySelectorAll(".tab-btn");
-      var pins = document.querySelectorAll(".map-pin");
-      var detailTitle = document.getElementById("map-detail-title");
-      var detailText = document.getElementById("map-detail-text");
-      var modo = "chalecos";
-      var seleccionado = null;
-
-      function estiloTab(btn, activo) {
-        btn.setAttribute("aria-pressed", String(activo));
-        btn.classList.toggle("bg-white", activo);
-        btn.classList.toggle("shadow-sm", activo);
-        btn.classList.toggle("text-gray-900", activo);
-        btn.classList.toggle("text-gray-500", !activo);
-      }
-      tabs.forEach(function (btn) {
-        estiloTab(btn, btn.dataset.tab === modo);
-        btn.addEventListener("click", function () {
-          modo = btn.dataset.tab;
-          tabs.forEach(function (b) { estiloTab(b, b === btn); });
-          render();
-        });
+      var nombresMunicipios = {
+        Cuauhtemoc: "Cuauhtémoc", Juarez: "Juárez", Jimenez: "Jiménez", Lopez: "López",
+        "San Francisco De Conchos": "San Francisco de Conchos", "Hidalgo Del Parral": "Hidalgo del Parral",
+        "Guadalupe Y Calvo": "Guadalupe y Calvo", "Dr. Belisario Dominguez": "Dr. Belisario Domínguez",
+        Ascension: "Ascensión", "San Francisco Del Oro": "San Francisco del Oro", "Aquiles Serdan": "Aquiles Serdán",
+        Carichi: "Carichí", Satevo: "Satevó", "Batopilas De Manuel Gomez Morin": "Batopilas de Manuel Gómez Morín",
+        Bachiniva: "Bachíniva", "Valle De Zaragoza": "Valle de Zaragoza", Chinipas: "Chínipas",
+        "Santa Barbara": "Santa Bárbara", "Gomez Farias": "Gómez Farías", Temosachic: "Temósachic",
+        Matachi: "Matachí", "San Francisco De Borja": "San Francisco de Borja", "Coyame Del Sotol": "Coyame del Sotol",
+        Huejotitan: "Huejotitán"
+      };
+      municipios.forEach(function (municipio) {
+        municipio.m = nombresMunicipios[municipio.m] || municipio.m;
       });
 
-      function seleccionarMunicipio(nombre) {
-        seleccionado = nombre;
-        var d = municipios.filter(function (x) { return x.m === nombre; })[0];
-        detailTitle.textContent = nombre;
-        if (!d) return;
-        if (d.alerta) {
-          detailText.textContent = d.chalecos + " chalecos activos, sin encuestas reportadas todavía. Requiere revisión con campo.";
-        } else {
-          detailText.textContent = d.chalecos + " chalecos activos. Coincidencia entre el total oficial y el archivo detallado: " + d.coincidencia + "%.";
-        }
-        pins.forEach(function (p) {
-          var esEste = p.dataset.pin === pinNombres[nombre];
-          p.querySelector(".pin-dot").classList.toggle("scale-125", esEste);
-          p.querySelector(".pin-dot").classList.toggle("ring-2", esEste);
-          p.querySelector(".pin-dot").classList.toggle("ring-gray-900", esEste);
-          p.querySelector(".pin-dot").classList.toggle("ring-offset-2", esEste);
-        });
-        render();
+      function fmt(v) {
+        return v.toLocaleString("es-MX");
+      }
+      var ns = "http://www.w3.org/2000/svg";
+      function el(tag, attrs) {
+        var e = document.createElementNS(ns, tag);
+        for (var k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
       }
 
-      pins.forEach(function (p) {
-        var nombrePin = Object.keys(pinNombres).filter(function (k) { return pinNombres[k] === p.dataset.pin; })[0];
-        p.setAttribute("aria-label", "Ver detalle de " + nombrePin);
-        p.addEventListener("click", function () {
-          var nombreReal = Object.keys(pinNombres).filter(function (k) { return pinNombres[k] === p.dataset.pin; })[0];
-          seleccionarMunicipio(nombreReal);
-        });
-      });
+      // El font-size de un <text> en SVG está en unidades del viewBox, no en
+      // píxeles físicos — con w-full, el mismo número se ve bien en celular
+      // (contenedor angosto) y gigante en escritorio (contenedor ancho), o
+      // viceversa. fontPx() mide el ancho real ya renderizado del elemento y
+      // devuelve las unidades de viewBox necesarias para que el texto mida
+      // targetPx en pantalla sin importar el dispositivo.
+      function fontPx(renderedEl, viewBoxW, targetPx) {
+        var renderedWidth = renderedEl.getBoundingClientRect().width || viewBoxW;
+        return targetPx / (renderedWidth / viewBoxW);
+      }
 
-      function render() {
-        var datos = municipios.slice();
-        if (modo === "chalecos") {
-          datos.sort(function (a, b) { return b.chalecos - a.chalecos; });
-        } else if (modo === "coincidencia") {
-          datos = datos.filter(function (d) { return d.coincidencia !== null; });
-          datos.sort(function (a, b) { return b.coincidencia - a.coincidencia; });
-        } else {
-          datos = datos.filter(function (d) { return d.alerta; });
-        }
+      // Posiciona un tooltip relativo al cursor real (ev.clientX/Y), nunca
+      // encima del punto que se apunta con el mouse — hallazgo directo del
+      // usuario: los tooltips anclados a la geometría del dato (no al
+      // cursor) aparecían justo donde apuntaba, tapando la vista. Se ancla
+      // la esquina inferior-izquierda del tooltip 14px a la derecha y 10px
+      // arriba del cursor (con transform, así funciona sin importar la
+      // altura real del tooltip); si el cursor está cerca del borde derecho
+      // del panel, se voltea a la izquierda del cursor en vez de salirse.
+      // También se voltea hacia ABAJO del cursor si está cerca del borde
+      // superior de la gráfica (móvil: paneles bajos, hover cerca del techo
+      // del gráfico) — si no, el tooltip se sale por arriba del contenedor
+      // (que no recorta overflow) y tapa el texto de la tarjeta de arriba.
+      function posicionarTooltip(tooltip, wrap, ev) {
+        var rect = wrap.getBoundingClientRect();
+        var x = Math.max(0, Math.min(ev.clientX - rect.left, rect.width));
+        var y = Math.max(0, Math.min(ev.clientY - rect.top, rect.height));
+        var flipX = x > rect.width - 190;
+        var flipY = y < 90;
+        tooltip.style.left = x + "px";
+        tooltip.style.top = y + "px";
+        var tx = flipX ? "calc(-100% - 14px)" : "14px";
+        var ty = flipY ? "10px" : "calc(-100% - 10px)";
+        tooltip.style.transform = "translate(" + tx + ", " + ty + ")";
+        tooltip.classList.remove("hidden");
+      }
 
-        list.innerHTML = "";
-        datos.forEach(function (d, i) {
-          var li = document.createElement("li");
-          var activo = d.m === seleccionado;
-          li.innerHTML =
-            '<button type="button" class="w-full flex items-center gap-3 py-2 text-left rounded-md px-2 -mx-2 hover:bg-gray-50 transition-colors' +
-            (activo ? " bg-gray-50" : "") +
-            '">' +
-            '<span class="text-sm text-gray-300 w-5 shrink-0 tabular-nums">' + (i + 1) + "</span>" +
-            '<span class="text-sm text-gray-800 flex-1 truncate">' + d.m + "</span>" +
-            (modo === "coincidencia"
-              ? '<span class="text-sm font-semibold text-gray-900 tabular-nums">' + d.coincidencia + "%</span>"
-              : modo === "alertas"
-              ? '<svg class="w-4 h-4 text-gray-400 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01M10.3 3.9 2.5 18a1.5 1.5 0 0 0 1.3 2.2h16.4a1.5 1.5 0 0 0 1.3-2.2L13.7 3.9a1.5 1.5 0 0 0-2.6 0Z"/></svg>'
-              : '<span class="text-sm font-semibold text-gray-900 tabular-nums">' + d.chalecos + "</span>") +
-            "</button>";
-          li.querySelector("button").addEventListener("click", function () {
-            seleccionarMunicipio(d.m);
+      // ===================================================================
+      // Mini-líneas — chalecos y encuestas por quincena, 2026 (small
+      // multiples, mismo eje X, nunca doble eje). Los 3 arreglos vienen
+      // directo de "Simulación 2026" / "Simulación 2026 (Ritmo Real)" —
+      // exportados del mismo script que genera el Excel, no recalculados
+      // en el navegador.
+      // ===================================================================
+      (function () {
+        var quincenas = ["2Q marzo 2026", "1Q abril 2026", "2Q abril 2026", "1Q mayo 2026", "2Q mayo 2026", "1Q junio 2026", "2Q junio 2026", "1Q julio 2026", "2Q julio 2026", "1Q agosto 2026", "2Q agosto 2026", "1Q septiembre 2026", "2Q septiembre 2026", "1Q octubre 2026", "2Q octubre 2026", "1Q noviembre 2026", "2Q noviembre 2026", "1Q diciembre 2026", "2Q diciembre 2026"];
+        var chalecos = [702, 712, 707, 710, 717, 312, 466, 492, 508, 533, 541, 535, 541, 541, 536, 534, 541, 547, 544];
+        var chalecosReal = 5; // último índice real (1Q junio 2026 ya es dato real, la caída se confirmó)
+        var encMeta = [5325, 4160, 4017, 2717, 3308, 2176, 3274, 3521, 3708, 3539, 3697, 3061, 2878, 2780, 2588, 2526, 2442, 2444, 3359];
+        var encLogrado = [5325, 4160, 4017, 2717, 3308, 1512, 2294, 2465, 2624, 2426, 2513, 1913, 1733, 1649, 1512, 1459, 1351, 1338, 2270];
+        var encRealTramo = 4; // último índice con dato real (2Q mayo 2026); de ahí en adelante ambas curvas son proyección
+        var n = quincenas.length;
+
+        var svgC = document.getElementById("mini-chalecos-chart");
+        var svgE = document.getElementById("mini-encuestas-chart");
+        var wrap = document.getElementById("mini-wrap");
+        var tooltip = document.getElementById("mini-tooltip");
+        var W = 880, padL = 121, padR = 12;
+        var innerW = W - padL - padR;
+
+        function xAt(i) { return padL + (innerW * i) / (n - 1); }
+
+        function drawLine(svg, H, padT, padB, values, splitIdx, maxY, color, showXLabels) {
+          var innerH = H - padT - padB;
+          var axisFs = fontPx(svg, W, 14);
+          var monthFs = fontPx(svg, W, 14);
+          function yAt(v) { return padT + innerH * (1 - v / maxY); }
+          [0, maxY / 2, maxY].forEach(function (t) {
+            var y = yAt(t);
+            svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: "#f3f4f6", "stroke-width": 1 }));
+            var lbl = el("text", { x: padL - 6, y: y + 3, "text-anchor": "end", "font-size": axisFs, fill: "#9ca3af" });
+            lbl.textContent = t >= 1000 ? (t / 1000).toFixed(t % 1000 === 0 ? 0 : 1) + "k" : Math.round(t);
+            svg.appendChild(lbl);
           });
-          list.appendChild(li);
+          var realPts = [], modPts = [];
+          for (var i = 0; i <= splitIdx; i++) realPts.push(xAt(i) + "," + yAt(values[i]));
+          for (var i = splitIdx; i < n; i++) modPts.push(xAt(i) + "," + yAt(values[i]));
+          svg.appendChild(el("polyline", { points: realPts.join(" "), fill: "none", stroke: color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }));
+          svg.appendChild(el("polyline", { points: modPts.join(" "), fill: "none", stroke: color, "stroke-width": 2, "stroke-dasharray": "5 4", "stroke-linejoin": "round", "stroke-linecap": "round" }));
+          if (showXLabels) {
+            var meses = { enero: "Ene", febrero: "Feb", marzo: "Mar", abril: "Abr", mayo: "May", junio: "Jun", julio: "Jul", agosto: "Ago", septiembre: "Sep", octubre: "Oct", noviembre: "Nov", diciembre: "Dic" };
+            var scaleNow = (svg.getBoundingClientRect().width || W) / W;
+            var pxPerIndex = (innerW * scaleNow) / (n - 1);
+            var labelWidthPx = 8 * 14 * 0.55 + 8; // "1Q abr '26" ~8 caracteres a 11px + margen
+            var monthStride = Math.max(3, Math.ceil(labelWidthPx / pxPerIndex));
+            for (var i = 0; i < n; i += monthStride) {
+              var parts = quincenas[i].split(" ");
+              var t = el("text", { x: xAt(i), y: H - 6, "text-anchor": "middle", "font-size": monthFs, fill: "#9ca3af" });
+              t.textContent = (meses[parts[1]] || parts[1]) + " '" + parts[2].slice(2);
+              svg.appendChild(t);
+            }
+          }
+          return yAt;
+        }
+
+        drawLine(svgC, 100, 8, 20, chalecos, chalecosReal, 800, "#044d98", true);
+        drawLine(svgE, 150, 8, 26, encMeta, encRealTramo, 6000, "#76b9dc", false);
+        drawLine(svgE, 150, 8, 26, encLogrado, encRealTramo, 6000, "#044d98", true);
+
+        // Puntos de hover: uno por quincena, franja vertical completa sobre
+        // ambas gráficas (mismo x en las 2), un solo tooltip con los 3 valores.
+        function yAtChalecos(v) { return 8 + (100 - 8 - 20) * (1 - v / 800); }
+        var qEl = tooltip.querySelector('[data-role="q"]');
+        var cEl = tooltip.querySelector('[data-role="chalecos"]');
+        var sEl = tooltip.querySelector('[data-role="sim"]');
+        var rEl = tooltip.querySelector('[data-role="real"]');
+        for (var i = 0; i < n; i++) {
+          (function (i) {
+            var x = xAt(i);
+            var hitC = el("rect", { x: x - innerW / n / 2, y: 0, width: innerW / n, height: 100, fill: "transparent", style: "cursor:pointer" });
+            var hitE = el("rect", { x: x - innerW / n / 2, y: 0, width: innerW / n, height: 150, fill: "transparent", style: "cursor:pointer" });
+            svgC.appendChild(hitC);
+            svgE.appendChild(hitE);
+            var dotC = el("circle", { cx: x, cy: yAtChalecos(chalecos[i]), r: 3.5, fill: "#044d98", stroke: "#fff", "stroke-width": 1.5, visibility: "hidden" });
+            svgC.appendChild(dotC);
+
+            function onEnter(ev) {
+              dotC.setAttribute("visibility", "visible");
+              qEl.textContent = quincenas[i];
+              cEl.textContent = fmt(chalecos[i]) + " chalecos activos" + (i > chalecosReal ? " (modelo)" : "");
+              sEl.textContent = "Según la meta simulada 2025: " + fmt(encMeta[i]) + " encuestas" + (i > encRealTramo ? " (estimación)" : "");
+              rEl.textContent = "Según lo logrado en 2025: " + fmt(encLogrado[i]) + " encuestas" + (i > encRealTramo ? " (modelo)" : "");
+              posicionarTooltip(tooltip, wrap, ev);
+            }
+            function onLeave() {
+              dotC.setAttribute("visibility", "hidden");
+              tooltip.classList.add("hidden");
+            }
+            hitC.addEventListener("pointerenter", onEnter);
+            hitC.addEventListener("pointermove", onEnter);
+            hitC.addEventListener("pointerleave", onLeave);
+            hitE.addEventListener("pointerenter", onEnter);
+            hitE.addEventListener("pointermove", onEnter);
+            hitE.addEventListener("pointerleave", onLeave);
+          })(i);
+        }
+      })();
+
+      // ===================================================================
+      // Gráfica — Rango de la proyección 2026 (lollipop horizontal)
+      // ===================================================================
+      (function () {
+        var escenarios = [
+          { label: "Encuestas al corte", sub: "Dato oficial al 29 de mayo", value: 20634, color: "#7fa8c8" },
+          { label: "Ritmo observado en 2026", sub: "Escenario conservador", value: 36764, color: "#4b91c4" },
+          { label: "Según lo logrado en 2025", sub: "Referencia principal", value: 46586, color: "#044d98", emphasis: true },
+          { label: "Según la meta simulada 2025", sub: "Referencia alta", value: 61520, color: "#8eb8d5" }
+        ];
+        var svg = document.getElementById("rango-chart");
+        var wrap = document.getElementById("rango-wrap");
+        var tooltip = document.getElementById("rango-tooltip");
+        var W = 820, H = 250, padL = 220, padR = 74, padT = 18, padB = 34;
+        var niceMax = 70000;
+        var innerW = W - padL - padR;
+        var axisY = H - padB;
+        var rowH = (axisY - padT) / escenarios.length;
+        var axisFs = fontPx(svg, W, 13);
+        var labelFs = fontPx(svg, W, 15);
+        var subFs = fontPx(svg, W, 13);
+        var valFs = fontPx(svg, W, 15);
+
+        function xAt(v) {
+          return padL + (innerW * v) / niceMax;
+        }
+
+        [0, 14000, 28000, 42000, 56000, 70000].forEach(function (t) {
+          var x = xAt(t);
+          svg.appendChild(el("line", { x1: x, x2: x, y1: padT, y2: axisY, stroke: "#e7edf3", "stroke-width": 1 }));
+          var lbl = el("text", { x: x, y: axisY + 20, "text-anchor": t === 70000 ? "end" : t === 0 ? "start" : "middle", "font-size": axisFs, fill: "#64748b" });
+          lbl.textContent = t === 0 ? "0" : Math.round(t / 1000) + "k";
+          svg.appendChild(lbl);
+        });
+        svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: axisY, y2: axisY, stroke: "#b8c7d5", "stroke-width": 1.2 }));
+
+        escenarios.forEach(function (d, i) {
+          var y = padT + rowH * (i + 0.5);
+          var x = xAt(d.value);
+          var label = el("text", { x: padL - 18, y: y - 3, "text-anchor": "end", "font-size": labelFs, "font-weight": d.emphasis ? 750 : 650, fill: d.emphasis ? "#044d98" : "#243b53" });
+          label.textContent = d.label;
+          svg.appendChild(label);
+          var sub = el("text", { x: padL - 18, y: y + 14, "text-anchor": "end", "font-size": subFs, fill: "#718096" });
+          sub.textContent = d.sub;
+          svg.appendChild(sub);
+
+          svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: "#e6edf3", "stroke-width": d.emphasis ? 10 : 8, "stroke-linecap": "round" }));
+          svg.appendChild(el("line", { x1: padL, x2: x, y1: y, y2: y, stroke: d.color, "stroke-width": d.emphasis ? 10 : 8, "stroke-linecap": "round" }));
+          if (d.emphasis) svg.appendChild(el("circle", { cx: x, cy: y, r: 11, fill: d.color, "fill-opacity": 0.12 }));
+          svg.appendChild(el("circle", { cx: x, cy: y, r: d.emphasis ? 7 : 6, fill: d.color, stroke: "#fff", "stroke-width": 2.5 }));
+
+          var anchor = x > W - 130 ? "end" : "start";
+          var valLbl = el("text", { x: x + (anchor === "end" ? -13 : 13), y: y + 5, "text-anchor": anchor, "font-size": valFs, "font-weight": 750, fill: d.emphasis ? "#044d98" : "#334e68" });
+          valLbl.textContent = fmt(d.value);
+          svg.appendChild(valLbl);
+
+          var hit = el("rect", { x: 0, y: y - rowH / 2, width: W, height: rowH, fill: "transparent", style: "cursor:pointer" });
+          svg.appendChild(hit);
+          hit.addEventListener("pointerenter", function (ev) { showTip(d, ev); });
+          hit.addEventListener("pointermove", function (ev) { showTip(d, ev); });
+          hit.addEventListener("pointerleave", hideTip);
+        });
+
+        var qEl = tooltip.querySelector('[data-role="label"]');
+        var vEl = tooltip.querySelector('[data-role="value"]');
+        function showTip(d, ev) {
+          qEl.textContent = d.label + ": " + d.sub;
+          vEl.textContent = fmt(d.value) + " encuestas";
+          posicionarTooltip(tooltip, wrap, ev);
+        }
+        function hideTip() {
+          tooltip.classList.add("hidden");
+        }
+      })();
+
+      // ===================================================================
+      // Gráfica — Histograma de municipios por tamaño de proyección
+      // ===================================================================
+      (function () {
+        var buckets = [
+          { label: "Sin proyección", short: "0", min: 0, max: 0 },
+          { label: "1 a 100", short: "1–100", min: 1, max: 100 },
+          { label: "101 a 500", short: "101–500", min: 101, max: 500 },
+          { label: "501 a 2,000", short: "501–2,000", min: 501, max: 2000 },
+          { label: "Más de 2,000", short: "2,000+", min: 2001, max: Infinity }
+        ];
+        buckets.forEach(function (b) {
+          b.count = municipios.filter(function (d) { return d.proy >= b.min && d.proy <= b.max; }).length;
+        });
+
+        var svg = document.getElementById("histo-chart");
+        var wrap = document.getElementById("histo-wrap");
+        var tooltip = document.getElementById("histo-tooltip");
+        var W = 420, H = 190, padL = 24, padR = 8, padT = 20, padB = 40;
+        var innerW = W - padL - padR, innerH = H - padT - padB;
+        var maxCount = Math.max.apply(null, buckets.map(function (b) { return b.count; }));
+        var niceMaxY = Math.ceil(maxCount / 5) * 5 || 5;
+        var axisFs = fontPx(svg, W, 14);
+        var countFs = fontPx(svg, W, 16);
+        var catFs = fontPx(svg, W, 14);
+
+        function yAt(c) {
+          return padT + innerH * (1 - c / niceMaxY);
+        }
+
+        var ticks = [];
+        for (var t = 0; t <= niceMaxY; t += Math.ceil(niceMaxY / 4)) ticks.push(t);
+        ticks.forEach(function (t) {
+          var y = yAt(t);
+          svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: "#e5e7eb", "stroke-width": 1 }));
+          var lbl = el("text", { x: padL - 6, y: y + 3, "text-anchor": "end", "font-size": axisFs, fill: "#9ca3af" });
+          lbl.textContent = t;
+          svg.appendChild(lbl);
+        });
+
+        var slot = innerW / buckets.length;
+        var barW = Math.min(46, slot * 0.55);
+        buckets.forEach(function (b, i) {
+          var cx = padL + slot * (i + 0.5);
+          var y = yAt(b.count);
+          var barH = padT + innerH - y;
+          var rect = el("rect", { x: cx - barW / 2, y: y, width: barW, height: Math.max(barH, 1), rx: 5, fill: "#0a6ab7", style: "cursor:pointer" });
+          svg.appendChild(rect);
+
+          var valLbl = el("text", { x: cx, y: y - 8, "text-anchor": "middle", "font-size": countFs, "font-weight": 700, fill: "#111827" });
+          valLbl.textContent = b.count;
+          svg.appendChild(valLbl);
+
+          var catLbl = el("text", { x: cx, y: H - padB + 18, "text-anchor": "middle", "font-size": catFs, fill: "#9ca3af" });
+          catLbl.textContent = b.short;
+          svg.appendChild(catLbl);
+
+          var hit = el("rect", { x: cx - slot / 2, y: padT, width: slot, height: innerH, fill: "transparent", style: "cursor:pointer" });
+          svg.appendChild(hit);
+          hit.addEventListener("pointerenter", function (ev) {
+            rect.setAttribute("fill", "#29a7d9");
+            showTip(b, ev);
+          });
+          hit.addEventListener("pointermove", function (ev) { showTip(b, ev); });
+          hit.addEventListener("pointerleave", function () {
+            rect.setAttribute("fill", "#0a6ab7");
+            hideTip();
+          });
+        });
+
+        var qEl = tooltip.querySelector('[data-role="label"]');
+        var vEl = tooltip.querySelector('[data-role="value"]');
+        function showTip(b, ev) {
+          qEl.textContent = "Proyección " + b.label;
+          vEl.textContent = b.count + " municipios (" + Math.round((b.count / 67) * 100) + "%)";
+          posicionarTooltip(tooltip, wrap, ev);
+        }
+        function hideTip() {
+          tooltip.classList.add("hidden");
+        }
+      })();
+
+      // ===================================================================
+      // Gráfica — Cobertura real 2026: chalecos × encuestas (stacked bar,
+      // 4 segmentos, calculados de los mismos 67 — nunca hardcodeados, así
+      // los números siempre cuadran con el resto de la página).
+      // ===================================================================
+      (function () {
+        var grupos = [
+          { key: "ambos", label: "Chalecos y encuestas", color: "#044d98", filter: function (d) { return d.c26 > 0 && d.rc > 0; } },
+          { key: "solo_chalecos", label: "Solo chalecos (revisar)", color: "#d58a24", filter: function (d) { return d.c26 > 0 && d.rc === 0; } },
+          { key: "solo_encuestas", label: "Solo encuestas (arrastre)", color: "#29a7d9", filter: function (d) { return d.c26 === 0 && d.rc > 0; } },
+          { key: "ninguno", label: "Ninguno de los dos", color: "#dbe6ef", filter: function (d) { return d.c26 === 0 && d.rc === 0; } }
+        ];
+        grupos.forEach(function (g) { g.count = municipios.filter(g.filter).length; });
+        var total = municipios.length;
+
+        var svg = document.getElementById("cobertura-chart");
+        var wrap = document.getElementById("cobertura-wrap");
+        var tooltip = document.getElementById("cobertura-tooltip");
+        var legend = document.getElementById("cobertura-legend");
+        var W = 420, H = 60, padL = 4, padR = 4, barY = 14, barH = 26;
+        var innerW = W - padL - padR;
+
+        var x = padL;
+        var qEl = tooltip.querySelector('[data-role="label"]');
+        var vEl = tooltip.querySelector('[data-role="value"]');
+        grupos.forEach(function (g) {
+          var w = innerW * (g.count / total);
+          var rect = el("rect", { x: x, y: barY, width: Math.max(w, 0.5), height: barH, fill: g.color, style: "cursor:pointer" });
+          svg.appendChild(rect);
+          function show(ev) {
+            qEl.textContent = g.label;
+            vEl.textContent = g.count + " municipios (" + Math.round((g.count / total) * 100) + "%)";
+            posicionarTooltip(tooltip, wrap, ev);
+          }
+          rect.addEventListener("pointerenter", show);
+          rect.addEventListener("pointermove", show);
+          rect.addEventListener("pointerleave", function () { tooltip.classList.add("hidden"); });
+          x += w;
+
+          var row = document.createElement("div");
+          row.className = "flex items-center gap-1.5";
+          row.innerHTML =
+            '<span class="w-2.5 h-2.5 rounded-full shrink-0" style="background:' + g.color + '"></span>' +
+            '<span class="text-gray-600">' + g.label + "</span>" +
+            '<span class="font-semibold text-gray-900 tabular-nums ml-auto pl-1">' + g.count + "</span>";
+          legend.appendChild(row);
+        });
+      })();
+
+      // ===================================================================
+      // Gráfica — 13 municipios con chalecos y cero encuestas (barras
+      // horizontales, calculadas de los mismos 67, no una lista a mano).
+      // ===================================================================
+      (function () {
+        var flagged = municipios.filter(function (d) { return d.c26 > 0 && d.rc === 0; })
+          .sort(function (a, b) { return b.c26 - a.c26; });
+
+        var svg = document.getElementById("anomalia-chart");
+        var wrap = document.getElementById("anomalia-wrap");
+        var tooltip = document.getElementById("anomalia-tooltip");
+        var W = 420, H = 230, padL = 235, padR = 34, padT = 4, padB = 4;
+        var innerW = W - padL - padR;
+        var rowH = (H - padT - padB) / flagged.length;
+        var maxC26 = Math.max.apply(null, flagged.map(function (d) { return d.c26; }));
+        var nameFs = fontPx(svg, W, 14);
+        var valFs = fontPx(svg, W, 14);
+
+        var qEl = tooltip.querySelector('[data-role="label"]');
+        var vEl = tooltip.querySelector('[data-role="value"]');
+        flagged.forEach(function (d, i) {
+          var y = padT + i * rowH;
+          var barH = Math.min(14, rowH * 0.6);
+          var barY = y + (rowH - barH) / 2;
+          var w = Math.max(innerW * (d.c26 / maxC26), 4);
+
+          var nameLbl = el("text", { x: padL - 8, y: barY + barH / 2 + 4, "text-anchor": "end", "font-size": nameFs, fill: "#374151" });
+          nameLbl.textContent = d.m;
+          svg.appendChild(nameLbl);
+
+          var rect = el("rect", { x: padL, y: barY, width: w, height: barH, rx: 4, fill: "#d58a24", style: "cursor:pointer" });
+          svg.appendChild(rect);
+
+          var valLbl = el("text", { x: padL + w + 6, y: barY + barH / 2 + 4, "font-size": valFs, "font-weight": 600, fill: "#111827" });
+          valLbl.textContent = d.c26;
+          svg.appendChild(valLbl);
+
+          var hit = el("rect", { x: 0, y: y, width: W, height: rowH, fill: "transparent", style: "cursor:pointer" });
+          svg.appendChild(hit);
+          function show(ev) {
+            rect.setAttribute("fill", "#f0a23b");
+            qEl.textContent = d.m;
+            vEl.textContent = d.c26 + (d.c26 === 1 ? " chaleco activo, 0 encuestas" : " chalecos activos, 0 encuestas");
+            posicionarTooltip(tooltip, wrap, ev);
+          }
+          hit.addEventListener("pointerenter", show);
+          hit.addEventListener("pointermove", show);
+          hit.addEventListener("pointerleave", function () {
+            rect.setAttribute("fill", "#d58a24");
+            tooltip.classList.add("hidden");
+          });
+        });
+      })();
+
+      // ===================================================================
+      // Gráfica — Scatter: real a corte vs. proyección anual, log-log,
+      // los 67 municipios como puntos (no una lista de 67 filas).
+      // ===================================================================
+      (function () {
+        var svg = document.getElementById("scatter-chart");
+        var wrap = document.getElementById("scatter-wrap");
+        var tooltip = document.getElementById("scatter-tooltip");
+        var W = 420, H = 260, padL = 34, padR = 10, padT = 10, padB = 26;
+        var innerW = W - padL - padR, innerH = H - padT - padB;
+        var axisFs = fontPx(svg, W, 14);
+
+        function log10(v) { return Math.log(v + 1) / Math.LN10; }
+        var maxX = Math.max.apply(null, municipios.map(function (d) { return d.rc; }));
+        var maxY = Math.max.apply(null, municipios.map(function (d) { return d.proy; }));
+        var domX = log10(maxX), domY = log10(maxY);
+
+        function xAt(v) { return padL + innerW * (log10(v) / domX); }
+        function yAt(v) { return padT + innerH * (1 - log10(v) / domY); }
+
+        [0, 10, 100, 1000, 10000].forEach(function (t) {
+          if (log10(t) > domX + 0.05) return;
+          var x = xAt(t);
+          svg.appendChild(el("line", { x1: x, x2: x, y1: padT, y2: H - padB, stroke: "#f3f4f6", "stroke-width": 1 }));
+          var lbl = el("text", { x: x, y: H - padB + 14, "text-anchor": "middle", "font-size": axisFs, fill: "#9ca3af" });
+          lbl.textContent = fmt(t);
+          svg.appendChild(lbl);
+        });
+        [0, 10, 100, 1000, 10000].forEach(function (t) {
+          if (log10(t) > domY + 0.05) return;
+          var y = yAt(t);
+          svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: "#f3f4f6", "stroke-width": 1 }));
+          var lbl = el("text", { x: padL - 6, y: y + 3, "text-anchor": "end", "font-size": axisFs, fill: "#9ca3af" });
+          lbl.textContent = fmt(t);
+          svg.appendChild(lbl);
+        });
+        svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: H - padB, y2: H - padB, stroke: "#d1d5db", "stroke-width": 1 }));
+        svg.appendChild(el("line", { x1: padL, x2: padL, y1: padT, y2: H - padB, stroke: "#d1d5db", "stroke-width": 1 }));
+
+        var qEl = tooltip.querySelector('[data-role="label"]');
+        var vEl = tooltip.querySelector('[data-role="value"]');
+        var v2El = tooltip.querySelector('[data-role="value2"]');
+        municipios.forEach(function (d) {
+          var cx = xAt(d.rc), cy = yAt(d.proy);
+          var flagged = d.c26 > 0 && d.rc === 0;
+          var dot = el("circle", {
+            cx: cx, cy: cy, r: flagged ? 4.4 : 3.3, fill: flagged ? "#c94b4b" : "#0a6ab7",
+            "fill-opacity": flagged ? 0.85 : 0.55, style: "cursor:pointer"
+          });
+          svg.appendChild(dot);
+          var hit = el("circle", { cx: cx, cy: cy, r: 9, fill: "transparent", style: "cursor:pointer" });
+          svg.appendChild(hit);
+          function show(ev) {
+            qEl.textContent = d.m + (flagged ? " (sin encuestas, con chalecos)" : "");
+            vEl.textContent = "Real a corte: " + fmt(d.rc);
+            v2El.textContent = "Proyección 2026: " + fmt(d.proy);
+            posicionarTooltip(tooltip, wrap, ev);
+          }
+          hit.addEventListener("pointerenter", show);
+          hit.addEventListener("pointermove", show);
+          hit.addEventListener("pointerleave", function () { tooltip.classList.add("hidden"); });
+        });
+      })();
+
+      // ===================================================================
+      // Gráfica — Avance real hacia la proyección, por municipio.
+      // Barras horizontales para que rango, valor y proporción se lean sin
+      // depender del ancho disponible ni de etiquetas comprimidas.
+      // ===================================================================
+      (function () {
+        var conProy = municipios.filter(function (d) { return d.proy > 0; });
+        var buckets = [
+          { label: "0 a 25%", short: "0–25%", min: 0, max: 0.25 },
+          { label: "25 a 50%", short: "25–50%", min: 0.25, max: 0.5 },
+          { label: "50 a 75%", short: "50–75%", min: 0.5, max: 0.75 },
+          { label: "75 a 100%", short: "75–100%", min: 0.75, max: 1.0001 },
+          { label: "Más de 100%", short: "100%+", min: 1.0001, max: Infinity }
+        ];
+        buckets.forEach(function (b) {
+          b.count = conProy.filter(function (d) { var p = d.rc / d.proy; return p >= b.min && p < b.max; }).length;
+        });
+
+        var svg = document.getElementById("avance-chart");
+        var wrap = document.getElementById("avance-wrap");
+        var tooltip = document.getElementById("avance-tooltip");
+        var compact = svg.getBoundingClientRect().width < 600;
+        var W = compact ? 420 : 760, H = 250;
+        var padL = compact ? 86 : 150, padR = compact ? 52 : 70, padT = 12, padB = 32;
+        svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+        var innerW = W - padL - padR, innerH = H - padT - padB;
+        var maxCount = Math.max.apply(null, buckets.map(function (b) { return b.count; }));
+        var niceMaxY = Math.ceil(maxCount / 5) * 5 || 5;
+        var axisFs = fontPx(svg, W, 13);
+        var countFs = fontPx(svg, W, 14);
+        var catFs = fontPx(svg, W, 15);
+
+        function xAt(c) { return padL + innerW * (c / niceMaxY); }
+
+        var ticks = [0, 7, 14, 21, 28, 35];
+        ticks.forEach(function (t) {
+          var x = xAt(t);
+          svg.appendChild(el("line", { x1: x, x2: x, y1: padT, y2: H - padB, stroke: "#e7edf3", "stroke-width": 1 }));
+          var lbl = el("text", { x: x, y: H - 10, "text-anchor": t === 0 ? "start" : t === 35 ? "end" : "middle", "font-size": axisFs, fill: "#64748b" });
+          lbl.textContent = t;
+          svg.appendChild(lbl);
+        });
+
+        var rowH = innerH / buckets.length;
+        var qEl = tooltip.querySelector('[data-role="label"]');
+        var vEl = tooltip.querySelector('[data-role="value"]');
+        buckets.forEach(function (b, i) {
+          var cy = padT + rowH * (i + 0.5);
+          var x = xAt(b.count);
+          var barH = i === 0 ? 14 : 12;
+          var fill = i === 0 ? "#044d98" : i === buckets.length - 1 ? "#0a6ab7" : "#6fa8cf";
+
+          var catLbl = el("text", { x: padL - 15, y: cy + 5, "text-anchor": "end", "font-size": catFs, "font-weight": i === 0 ? 700 : 600, fill: i === 0 ? "#044d98" : "#334e68" });
+          catLbl.textContent = b.short;
+          svg.appendChild(catLbl);
+
+          svg.appendChild(el("rect", { x: padL, y: cy - barH / 2, width: innerW, height: barH, rx: barH / 2, fill: "#e7eef5" }));
+          var rect = el("rect", { x: padL, y: cy - barH / 2, width: Math.max(x - padL, 3), height: barH, rx: barH / 2, fill: fill, style: "cursor:pointer" });
+          svg.appendChild(rect);
+
+          var valLbl = el("text", { x: Math.min(x + 12, W - 6), y: cy + 5, "font-size": countFs, "font-weight": 750, fill: "#243b53" });
+          valLbl.textContent = b.count + " · " + Math.round((b.count / conProy.length) * 100) + "%";
+          svg.appendChild(valLbl);
+
+          var hit = el("rect", { x: 0, y: cy - rowH / 2, width: W, height: rowH, fill: "transparent", style: "cursor:pointer" });
+          svg.appendChild(hit);
+          function show(ev) {
+            rect.setAttribute("fill", "#29a7d9");
+            qEl.textContent = "Avance " + b.label;
+            vEl.textContent = b.count + " municipios (" + Math.round((b.count / conProy.length) * 100) + "% de los " + conProy.length + " con proyección)";
+            posicionarTooltip(tooltip, wrap, ev);
+          }
+          hit.addEventListener("pointerenter", show);
+          hit.addEventListener("pointermove", show);
+          hit.addEventListener("pointerleave", function () {
+            rect.setAttribute("fill", fill);
+            tooltip.classList.add("hidden");
+          });
+        });
+      })();
+
+      // ===================================================================
+      // Tabla — zebra, hover, tabular-nums, encabezados ordenables
+      // ===================================================================
+      var columnas = [
+        { key: "m", label: "Municipio", type: "text" },
+        { key: "c26", label: "Chalecos activos · junio", type: "num" },
+        { key: "rc", label: "Encuestas al 29 de mayo", type: "num" },
+        { key: "proy", label: "Proyección anual 2026", type: "num" },
+        { key: "rs", label: "Según la meta simulada 2025 (contexto)", type: "num" },
+        { key: "ratio", label: "% de meta 2025 lograda (contexto)", type: "pct" }
+      ];
+      var sortKey = "proy";
+      var sortDir = -1;
+      var theadRow = document.getElementById("reportes-tabla-head");
+      var tbody = document.getElementById("reportes-tabla-body");
+
+      function renderHead() {
+        theadRow.innerHTML = "";
+        columnas.forEach(function (c) {
+          var th = document.createElement("th");
+          th.className = "px-3 py-2 cursor-pointer select-none hover:text-gray-900 whitespace-nowrap";
+          var arrow = c.key === sortKey ? (sortDir === 1 ? " ▲" : " ▼") : "";
+          th.textContent = c.label + arrow;
+          th.addEventListener("click", function () {
+            if (sortKey === c.key) {
+              sortDir = -sortDir;
+            } else {
+              sortKey = c.key;
+              sortDir = c.type === "text" ? 1 : -1;
+            }
+            renderHead();
+            renderBody();
+          });
+          theadRow.appendChild(th);
         });
       }
 
-      render();
+      function renderBody() {
+        var rows = municipios.slice().sort(function (a, b) {
+          var va = a[sortKey], vb = b[sortKey];
+          if (typeof va === "string") return va.localeCompare(vb) * sortDir;
+          return (va - vb) * sortDir;
+        });
+        tbody.innerHTML = "";
+        rows.forEach(function (d, i) {
+          var tr = document.createElement("tr");
+          tr.className = (i % 2 === 1 ? "bg-gray-50/60 " : "") + "hover:bg-gray-100 transition-colors";
+          var cols = [d.m, fmt(d.c26), fmt(d.rc), fmt(d.proy), fmt(d.rs), Math.round(d.ratio * 100) + "%"];
+          cols.forEach(function (val, ci) {
+            var td = document.createElement("td");
+            td.className = "px-3 py-1.5" + (ci === 0 ? "" : " tabular-nums text-right");
+            td.textContent = val;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      }
+
+      renderHead();
+      renderBody();
     })();
   </script>
 </body>
