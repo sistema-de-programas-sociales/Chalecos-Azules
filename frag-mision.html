@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inicio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Nunito+Sans:opsz,wght@6..12,400..900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/portal.css" />
+</head>
+<body class="portal-fragment page-inicio h-full">
+  <main class="portal-page">
+    <div class="portal-container space-y-5">
+      <header class="page-header">
+        <div class="page-heading-group">
+          <h1 class="page-title">Estado actual del programa</h1>
+          <p class="page-subtitle">Personal activo, cobertura municipal y encuestas oficiales usadas en las proyecciones de 2026.</p>
+        </div>
+        <p class="cutoff-badge">ENCUESTAS AL<br><strong>29 MAY 2026</strong></p>
+      </header>
+
+      <div class="grid grid-cols-1 xl:grid-cols-[1.08fr_0.92fr] gap-4 items-stretch">
+        <section class="panel relative overflow-hidden" aria-labelledby="estatus-title">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <p class="status-chip status-chip--real">Personal oficial · 1Q junio</p>
+              <h3 id="estatus-title" class="section-title mt-3">Estatus de los chalecos</h3>
+              <p class="section-note">De 1,389 registros, el total estatal oficial es de 312 chalecos activos.</p>
+            </div>
+            <span class="status-chip border-portal-critical/30 bg-portal-critical-open text-portal-critical">Ajuste presupuestal</span>
+          </div>
+
+          <div class="mt-5 grid grid-cols-1 md:grid-cols-[minmax(0,1fr)_minmax(16rem,0.9fr)] gap-5 items-center">
+            <div>
+              <p class="data-number text-[clamp(3.25rem,8vw,5.6rem)] leading-none font-semibold text-brand-blue">312</p>
+              <p class="mt-2 text-sm font-bold text-portal-ink">chalecos activos</p>
+              <p class="mt-3 max-w-md text-sm leading-relaxed text-portal-muted">El ajuste de junio redujo el personal activo <strong class="text-portal-critical">56%</strong>. Las proyecciones ya incorporan esa caída.</p>
+              <div class="mt-4 flex flex-wrap gap-5">
+                <div><p class="data-number text-xl font-semibold text-portal-critical">795</p><p class="text-xs text-portal-muted">bajas confirmadas</p></div>
+                <div><p class="data-number text-xl font-semibold text-portal-ink">282</p><p class="text-xs text-portal-muted">registros en otros estatus</p></div>
+              </div>
+            </div>
+
+            <div id="donut-wrap" class="relative rounded-xl bg-portal-blue-open/55 p-3 flex flex-col sm:flex-row items-center justify-center gap-3 min-w-0">
+              <svg id="donut-chart" viewBox="0 0 140 140" class="w-28 h-28 shrink-0" role="img"
+                aria-label="Estatus de chalecos: 312 activos, 795 bajas confirmadas y 282 registros en otros estatus, de un total de 1,389."></svg>
+              <div id="donut-legend" class="w-full sm:w-auto text-sm space-y-1.5 min-w-0"></div>
+              <div id="donut-tooltip" class="portal-tooltip hidden absolute pointer-events-none text-white text-sm rounded-md px-2.5 py-1.5 whitespace-nowrap z-10">
+                <p data-role="label" class="font-medium"></p>
+                <p data-role="value" class="font-semibold"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-5 border-t border-portal-line pt-4">
+            <div class="flex items-baseline justify-between gap-3">
+              <div><p class="section-title">Encuestas oficiales frente a la referencia principal</p><p class="section-note">20,634 al 29 de mayo, frente a una estimación anual de 46,586 basada en lo logrado en 2025</p></div>
+              <span class="data-number text-lg font-semibold text-brand-blue">44%</span>
+            </div>
+            <div id="meter-avance-wrap" class="relative mt-1">
+              <svg id="meter-avance" viewBox="0 0 260 70" class="w-full h-16" role="img" aria-label="20,634 de 46,586 encuestas proyectadas, 44 por ciento."></svg>
+              <div id="meter-avance-tooltip" class="portal-tooltip hidden absolute pointer-events-none text-white text-sm rounded-md px-2.5 py-1.5 whitespace-nowrap z-10">
+                <p data-role="label" class="font-medium"></p><p data-role="value" class="font-semibold"></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-2 border-t border-portal-line pt-4">
+              <div class="flex items-baseline justify-between gap-3"><p class="section-title">Estimaciones anuales 2026</p><a href="frag-reportes.html" class="text-xs font-bold text-brand-blue hover:text-brand-navy">Ver cómo se calculan →</a></div>
+            <div class="mt-3 grid grid-cols-3 gap-px overflow-hidden rounded-lg border border-portal-line bg-portal-line">
+              <div class="bg-white p-3"><p class="text-xs font-semibold text-portal-muted">Ritmo observado 2026</p><p class="data-number mt-1 text-lg font-semibold text-portal-ink">36,764</p><p class="text-xs text-portal-muted">Referencia baja</p></div>
+              <div class="bg-portal-blue-open p-3"><p class="text-xs font-bold text-brand-blue">Logrado en 2025</p><p class="data-number mt-1 text-lg font-semibold text-brand-blue">46,586</p><p class="text-xs text-brand-blue">Referencia principal</p></div>
+              <div class="bg-white p-3"><p class="text-xs font-semibold text-portal-muted">Meta simulada 2025</p><p class="data-number mt-1 text-lg font-semibold text-portal-ink">61,520</p><p class="text-xs text-portal-muted">Referencia alta</p></div>
+            </div>
+              <p class="mt-3 text-xs leading-relaxed text-portal-muted">Cada estimación usa un supuesto distinto. Deben leerse como un rango de referencia, no como una sola meta comprometida.</p>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="territorio-title">
+          <div class="flex items-start justify-between gap-3">
+            <div>
+              <p class="status-chip">67 municipios</p>
+            <h3 id="territorio-title" class="section-title mt-3">Cobertura territorial</h3>
+              <p class="section-note">Cada unidad representa un municipio. Azul indica actividad; ámbar requiere verificación.</p>
+            </div>
+            <div class="text-right"><p class="data-number text-3xl font-semibold text-brand-blue">27</p><p class="text-xs text-portal-muted">con chalecos activos</p></div>
+          </div>
+
+          <div id="territory-grid" class="territory-grid mt-5" role="list" aria-label="Estado de actividad de los 67 municipios"></div>
+          <div class="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-xs text-portal-muted">
+            <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-[3px] border border-[#94b7d7] bg-portal-blue-open"></span>Con chalecos</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-[3px] border border-[#d8aa60] bg-portal-attention-open"></span>Revisar reporte</span>
+            <span class="inline-flex items-center gap-1.5"><span class="h-3 w-3 rounded-[3px] border border-portal-line bg-white"></span>Sin actividad actual</span>
+          </div>
+
+          <div id="meter-municipios-wrap" class="relative mt-4 border-t border-portal-line pt-3">
+            <svg id="meter-municipios" viewBox="0 0 260 70" class="w-full h-16" role="img" aria-label="27 de 67 municipios con chalecos activos al corte de personal, 40 por ciento."></svg>
+            <div id="meter-municipios-tooltip" class="portal-tooltip hidden absolute pointer-events-none text-white text-sm rounded-md px-2.5 py-1.5 whitespace-nowrap z-10">
+              <p data-role="label" class="font-medium"></p><p data-role="value" class="font-semibold"></p>
+            </div>
+          </div>
+
+          <div class="attention-note mt-3">
+            <span class="data-number text-lg font-semibold">13</span>
+            <p class="text-sm leading-relaxed"><strong>municipios tienen chalecos activos y cero encuestas reportadas.</strong> La interfaz los marca para revisión; no asume que el dato faltante es cero operativo.</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- Chart: chalecos activos por quincena, 2025-2026. Un solo hue (gray-900,
+        job "trend over time" de dataviz) — sólido = dato real, punteado = modelo
+        de recuperación anclado en el precedente de 2025 (ver Diccionario de
+        Datos del archivo fuente). Hover: crosshair + tooltip por proximidad,
+        construido a mano en SVG/JS vanilla (sin librería). -->
+      <section class="panel">
+        <div class="flex items-baseline justify-between flex-wrap gap-2">
+          <div>
+            <h3 class="section-title">Chalecos activos por quincena</h3>
+            <p class="section-note">2025–2026 · línea sólida: dato real · línea punteada: recuperación estimada</p>
+          </div>
+        </div>
+
+        <div id="chalecos-chart-wrap" class="relative mt-3">
+          <svg
+            id="chalecos-chart"
+            viewBox="0 0 880 280"
+            class="w-full h-64"
+            role="img"
+            aria-label="Chalecos activos por quincena, 2025 a 2026. Se mantuvo entre 600 y 720 durante todo 2025 y hasta mayo de 2026, cayó a 312 en junio de 2026 por un ajuste presupuestal, y se modela una recuperación gradual hacia 544 a finales de 2026."
+          ></svg>
+          <div
+            id="chalecos-chart-tooltip"
+            class="portal-tooltip hidden absolute top-1 pointer-events-none text-white text-sm rounded-md px-2.5 py-1.5 whitespace-nowrap"
+          >
+            <p data-role="q" class="font-medium"></p>
+            <p data-role="v" class="font-semibold"></p>
+            <p data-role="f" class="text-gray-300"></p>
+          </div>
+        </div>
+
+        <p class="text-sm text-portal-muted mt-2 max-w-4xl leading-relaxed">La línea punteada modela una recuperación gradual después del ajuste de junio; no representa resultados logrados.</p>
+
+        <details class="mt-3 text-sm text-portal-muted">
+          <summary class="cursor-pointer select-none font-semibold text-brand-blue hover:text-brand-navy">Ver tabla de datos</summary>
+          <div class="mt-2 max-h-64 overflow-y-auto border border-gray-100 rounded-md">
+            <table class="w-full text-left">
+              <thead class="sticky top-0 bg-gray-50 text-gray-500 uppercase text-xs tracking-wide">
+                <tr>
+                  <th class="px-3 py-1.5">Quincena</th>
+                  <th class="px-3 py-1.5">Chalecos activos</th>
+                  <th class="px-3 py-1.5">Fuente</th>
+                </tr>
+              </thead>
+              <tbody id="chalecos-chart-table-body" class="divide-y divide-gray-100"></tbody>
+            </table>
+          </div>
+        </details>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // Posiciona un tooltip relativo al cursor real (ev.clientX/Y), nunca
+    // encima del punto que se apunta con el mouse — mismo patrón que
+    // Reportes: ancla la esquina inferior-izquierda del tooltip 14px a la
+    // derecha y 10px arriba del cursor, volteando a la izquierda si el
+    // cursor está cerca del borde derecho del panel, y hacia ABAJO del
+    // cursor si está cerca del borde superior (si no, el tooltip se sale
+    // por arriba del contenedor y tapa el texto de la tarjeta de arriba).
+    function posicionarTooltip(tooltip, wrap, ev) {
+      var rect = wrap.getBoundingClientRect();
+      var x = Math.max(0, Math.min(ev.clientX - rect.left, rect.width));
+      var y = Math.max(0, Math.min(ev.clientY - rect.top, rect.height));
+      var flipX = x > rect.width - 190;
+      var flipY = y < 90;
+      tooltip.style.left = x + "px";
+      tooltip.style.top = y + "px";
+      var tx = flipX ? "calc(-100% - 14px)" : "14px";
+      var ty = flipY ? "10px" : "calc(-100% - 10px)";
+      tooltip.style.transform = "translate(" + tx + ", " + ty + ")";
+      tooltip.classList.remove("hidden");
+    }
+
+    (function () {
+      // Serie histórica real de "Chalecos Activos - Historico" (Proyecciones 2026
+      // - Encuestas y Chalecos Azules.xlsx). Nota: no existe "2Q enero 2026" en la
+      // fuente (0 encuestas ese periodo en todos los municipios, arranque real de
+      // personal sin producción todavía) — se omite tal cual, no se rellena.
+      var data = [
+        { q: "2Q marzo 2025", v: 393, real: true },
+        { q: "1Q abril 2025", v: 587, real: true },
+        { q: "2Q abril 2025", v: 620, real: true },
+        { q: "1Q mayo 2025", v: 640, real: true },
+        { q: "2Q mayo 2025", v: 672, real: true },
+        { q: "1Q junio 2025", v: 682, real: true },
+        { q: "2Q junio 2025", v: 674, real: true },
+        { q: "1Q julio 2025", v: 681, real: true },
+        { q: "2Q julio 2025", v: 681, real: true },
+        { q: "1Q agosto 2025", v: 675, real: true },
+        { q: "2Q agosto 2025", v: 673, real: true },
+        { q: "1Q septiembre 2025", v: 682, real: true },
+        { q: "2Q septiembre 2025", v: 689, real: true },
+        { q: "1Q octubre 2025", v: 685, real: true },
+        { q: "2Q octubre 2025", v: 685, real: true },
+        { q: "1Q noviembre 2025", v: 691, real: true },
+        { q: "2Q noviembre 2025", v: 695, real: true },
+        { q: "1Q diciembre 2025", v: 695, real: true },
+        { q: "2Q diciembre 2025", v: 697, real: true },
+        { q: "1Q enero 2026", v: 663, real: true },
+        { q: "1Q febrero 2026", v: 698, real: true },
+        { q: "1Q marzo 2026", v: 704, real: true },
+        { q: "2Q marzo 2026", v: 702, real: true },
+        { q: "1Q abril 2026", v: 712, real: true },
+        { q: "2Q abril 2026", v: 707, real: true },
+        { q: "1Q mayo 2026", v: 710, real: true },
+        { q: "2Q mayo 2026", v: 717, real: true },
+        { q: "1Q junio 2026", v: 312, real: true },
+        { q: "2Q junio 2026", v: 466, real: false },
+        { q: "1Q julio 2026", v: 492, real: false },
+        { q: "2Q julio 2026", v: 508, real: false },
+        { q: "1Q agosto 2026", v: 533, real: false },
+        { q: "2Q agosto 2026", v: 541, real: false },
+        { q: "1Q septiembre 2026", v: 535, real: false },
+        { q: "2Q septiembre 2026", v: 541, real: false },
+        { q: "1Q octubre 2026", v: 541, real: false },
+        { q: "2Q octubre 2026", v: 536, real: false },
+        { q: "1Q noviembre 2026", v: 534, real: false },
+        { q: "2Q noviembre 2026", v: 541, real: false },
+        { q: "1Q diciembre 2026", v: 547, real: false },
+        { q: "2Q diciembre 2026", v: 544, real: false }
+      ];
+
+      var svg = document.getElementById("chalecos-chart");
+      var wrap = document.getElementById("chalecos-chart-wrap");
+      var tooltip = document.getElementById("chalecos-chart-tooltip");
+      var tableBody = document.getElementById("chalecos-chart-table-body");
+      var ns = "http://www.w3.org/2000/svg";
+      var W = 880,
+        H = 280,
+        padL = 115,
+        padR = 12,
+        padT = 16,
+        padB = 26;
+      var innerW = W - padL - padR,
+        innerH = H - padT - padB;
+      var maxY = 800;
+      var n = data.length;
+
+      function xAt(i) {
+        return padL + (innerW * i) / (n - 1);
+      }
+      function yAt(v) {
+        return padT + innerH * (1 - v / maxY);
+      }
+      function fmt(v) {
+        return v.toLocaleString("es-MX");
+      }
+      function el(tag, attrs) {
+        var e = document.createElementNS(ns, tag);
+        for (var k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+      }
+
+      // El font-size de un <text> en SVG está en unidades del viewBox, no en
+      // píxeles físicos — con w-full, el mismo número se ve bien en celular
+      // (contenedor angosto) y gigante en escritorio (contenedor ancho), o
+      // viceversa. fontPx() mide el ancho real ya renderizado del elemento y
+      // devuelve las unidades de viewBox necesarias para que el texto mida
+      // targetPx en pantalla sin importar el dispositivo.
+      function fontPx(renderedEl, viewBoxW, targetPx) {
+        var renderedWidth = renderedEl.getBoundingClientRect().width || viewBoxW;
+        return targetPx / (renderedWidth / viewBoxW);
+      }
+      var axisFs = fontPx(svg, W, 14);
+      var monthFs = fontPx(svg, W, 14);
+      var endValFs = fontPx(svg, W, 18);
+      var subValFs = fontPx(svg, W, 16);
+
+      // Gridlines + eje Y (ticks redondos)
+      [0, 200, 400, 600, 800].forEach(function (tv) {
+        var y = yAt(tv);
+        svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: y, y2: y, stroke: "#d7e0e8", "stroke-width": 1 }));
+        var t = el("text", { x: padL - 8, y: y + 3, "text-anchor": "end", "font-size": axisFs, fill: "#5d6b7c" });
+        t.textContent = fmt(tv);
+        svg.appendChild(t);
+      });
+
+      // Punto donde termina el dato real (contiguo desde el inicio)
+      var splitIdx = 0;
+      for (var i = 0; i < n; i++) {
+        if (data[i].real) splitIdx = i;
+        else break;
+      }
+
+      var realPts = [];
+      for (var i = 0; i <= splitIdx; i++) realPts.push(xAt(i) + "," + yAt(data[i].v));
+      var modeledPts = [];
+      for (var i = splitIdx; i < n; i++) modeledPts.push(xAt(i) + "," + yAt(data[i].v));
+
+      // Área bajo el tramo real únicamente (el modelado no lleva relleno, para
+      // no transmitir más certeza de la que tiene)
+      var areaPts = realPts.slice();
+      areaPts.push(xAt(splitIdx) + "," + yAt(0));
+      areaPts.push(xAt(0) + "," + yAt(0));
+      svg.appendChild(el("polygon", { points: areaPts.join(" "), fill: "#044d98", "fill-opacity": 0.09 }));
+
+      svg.appendChild(
+        el("polyline", {
+          points: realPts.join(" "),
+          fill: "none",
+          stroke: "#044d98",
+          "stroke-width": 2,
+          "stroke-linejoin": "round",
+          "stroke-linecap": "round"
+        })
+      );
+      svg.appendChild(
+        el("polyline", {
+          points: modeledPts.join(" "),
+          fill: "none",
+          stroke: "#5d6b7c",
+          "stroke-width": 2,
+          "stroke-dasharray": "5 4",
+          "stroke-linejoin": "round",
+          "stroke-linecap": "round"
+        })
+      );
+
+      // Etiquetas directas: el mínimo (el ajuste presupuestal) y el último punto —
+      // "label the endpoint, the extreme, or the one series the story is about"
+      var minIdx = 0,
+        lastIdx = n - 1;
+      for (var i = 1; i < n; i++) if (data[i].v < data[minIdx].v) minIdx = i;
+
+      [minIdx, lastIdx].forEach(function (i) {
+        svg.appendChild(
+          el("circle", { cx: xAt(i), cy: yAt(data[i].v), r: 4, fill: "#044d98", stroke: "#fff", "stroke-width": 2 })
+        );
+      });
+
+      // Ambas etiquetas van a la IZQUIERDA del punto mínimo, no arriba — el
+      // tramo que baja de 717 a 312 es casi vertical justo ahí, y un texto
+      // centrado arriba del punto quedaba encima de la línea (colisión real,
+      // detectada al revisar el screenshot). A la izquierda, bajo el tramo
+      // descendente, el hueco está libre.
+      var minLabel = el("text", {
+        x: xAt(minIdx) - 12,
+        y: yAt(data[minIdx].v) - fontPx(svg, W, 4),
+        "text-anchor": "end",
+        "font-size": endValFs,
+        "font-weight": 600,
+            fill: "#044d98"
+      });
+      minLabel.textContent = fmt(data[minIdx].v);
+      svg.appendChild(minLabel);
+
+      var minSub = el("text", {
+        x: xAt(minIdx) - 12,
+        y: yAt(data[minIdx].v) + fontPx(svg, W, 18),
+        "text-anchor": "end",
+        "font-size": subValFs,
+        "font-weight": 600,
+            fill: "#a33b3b"
+      });
+      minSub.textContent = "−56%";
+      svg.appendChild(minSub);
+
+      var endLabel = el("text", {
+        x: xAt(lastIdx) - 6,
+        y: yAt(data[lastIdx].v) - fontPx(svg, W, 14),
+        "text-anchor": "end",
+        "font-size": endValFs,
+        "font-weight": 600,
+            fill: "#172033"
+      });
+      endLabel.textContent = fmt(data[lastIdx].v);
+      svg.appendChild(endLabel);
+
+      // Eje X disperso (nunca una etiqueta por punto) — el espaciado mínimo
+      // entre etiquetas depende de cuánto mide monthFs ya renderizado en
+      // pantalla, no de un número fijo de puntos: en celular (escala chica)
+      // monthFs ocupa más unidades de viewBox por carácter, así que hace
+      // falta saltar más puntos para que "Mar '25"/"Jun '25" no se encimen.
+      var scaleNow = (svg.getBoundingClientRect().width || W) / W;
+      var pxPerIndex = (innerW * scaleNow) / (n - 1);
+      var labelWidthPx = 7 * 14 * 0.55 + 8; // "Mar '25" ~7 caracteres a 11px + margen
+      var stride = Math.max(3, Math.ceil(labelWidthPx / pxPerIndex));
+      var tickIdx = [];
+      for (var i = 0; i < n; i += stride) {
+        // No agregar un tick regular si cae demasiado cerca de minIdx/lastIdx
+        // (que siempre se agregan aparte abajo) — si no, las 2 etiquetas se
+        // encimarían en vez de mostrarse una junto a otra con espacio.
+        if (Math.abs(i - minIdx) < stride || Math.abs(i - lastIdx) < stride) continue;
+        tickIdx.push(i);
+      }
+      tickIdx.push(lastIdx);
+      tickIdx.push(minIdx);
+      tickIdx.sort(function (a, b) {
+        return a - b;
+      });
+      var meses = { enero: "Ene", febrero: "Feb", marzo: "Mar", abril: "Abr", mayo: "May", junio: "Jun", julio: "Jul", agosto: "Ago", septiembre: "Sep", octubre: "Oct", noviembre: "Nov", diciembre: "Dic" };
+      function shortLabel(q) {
+        var parts = q.split(" ");
+        var mes = meses[parts[1]] || parts[1];
+        return mes + " '" + parts[2].slice(2);
+      }
+      tickIdx.forEach(function (i) {
+        var t = el("text", { x: xAt(i), y: H - 6, "text-anchor": "middle", "font-size": monthFs, fill: "#5d6b7c" });
+        t.textContent = shortLabel(data[i].q);
+        svg.appendChild(t);
+      });
+
+      // Crosshair + hover dot (se muestran/mueven en pointermove)
+      var crosshair = el("line", {
+        x1: 0,
+        x2: 0,
+        y1: padT,
+        y2: H - padB,
+          stroke: "#7f8b98",
+        "stroke-width": 1,
+        "stroke-dasharray": "3 3",
+        visibility: "hidden"
+      });
+      svg.appendChild(crosshair);
+      var hoverDot = el("circle", { r: 5, fill: "#044d98", stroke: "#fff", "stroke-width": 2, visibility: "hidden" });
+      svg.appendChild(hoverDot);
+
+      var qEl = tooltip.querySelector('[data-role="q"]');
+      var vEl = tooltip.querySelector('[data-role="v"]');
+      var fEl = tooltip.querySelector('[data-role="f"]');
+
+      function showAt(i) {
+        var cx = xAt(i),
+          cy = yAt(data[i].v);
+        crosshair.setAttribute("x1", cx);
+        crosshair.setAttribute("x2", cx);
+        crosshair.setAttribute("visibility", "visible");
+        hoverDot.setAttribute("cx", cx);
+        hoverDot.setAttribute("cy", cy);
+        hoverDot.setAttribute("visibility", "visible");
+
+        var rect = wrap.getBoundingClientRect();
+        var scaleX = rect.width / W;
+        tooltip.style.left = Math.min(rect.width - 160, Math.max(0, cx * scaleX - 60)) + "px";
+        tooltip.classList.remove("hidden");
+
+        qEl.textContent = data[i].q;
+        vEl.textContent = fmt(data[i].v) + " chalecos activos";
+        fEl.textContent = data[i].real ? "Dato real" : "Modelo de recuperación";
+      }
+      function hideTooltip() {
+        crosshair.setAttribute("visibility", "hidden");
+        hoverDot.setAttribute("visibility", "hidden");
+        tooltip.classList.add("hidden");
+      }
+      function nearestIndex(clientX) {
+        var rect = svg.getBoundingClientRect();
+        var xFrac = (clientX - rect.left) / rect.width;
+        var xSvg = xFrac * W;
+        var idx = Math.round(((xSvg - padL) / innerW) * (n - 1));
+        return Math.max(0, Math.min(n - 1, idx));
+      }
+      // Nota de accesibilidad (v1, no bloqueante): el tooltip por ahora solo
+      // responde a pointermove, no a foco de teclado — paridad total requeriría
+      // puntos focusables por índice. Aceptado para esta fase de revisión
+      // interna; la tabla de abajo ya deja todos los valores alcanzables sin
+      // hover ni teclado especial.
+      svg.addEventListener("pointermove", function (ev) {
+        showAt(nearestIndex(ev.clientX));
+      });
+      svg.addEventListener("pointerleave", hideTooltip);
+
+      // Tabla de datos (mismo array, sin hover) — ver <details> arriba
+      data.forEach(function (d) {
+        var tr = document.createElement("tr");
+        var tdQ = document.createElement("td");
+        var tdV = document.createElement("td");
+        var tdF = document.createElement("td");
+        tdQ.className = "px-3 py-1";
+        tdV.className = "px-3 py-1";
+        tdF.className = "px-3 py-1";
+        tdQ.textContent = d.q;
+        tdV.textContent = fmt(d.v);
+        tdF.textContent = d.real ? "Real" : "Modelado";
+        tr.appendChild(tdQ);
+        tr.appendChild(tdV);
+        tr.appendChild(tdF);
+        tableBody.appendChild(tr);
+      });
+    })();
+
+    (function () {
+      // ===================================================================
+      // Donut — estatus de los chalecos ('1 - Zonas' de Monitoreo y Estatus,
+      // 1,389 registros). Escala de grises secuencial (más oscuro = estado
+      // más "sano"), consistente con el resto del portal sin color de marca.
+      // ===================================================================
+      var ns = "http://www.w3.org/2000/svg";
+      function el(tag, attrs) {
+        var e = document.createElementNS(ns, tag);
+        for (var k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+      }
+      function fmt(v) {
+        return v.toLocaleString("es-MX");
+      }
+
+      var segmentos = [
+        { label: "Activos", value: 312, color: "#044d98" },
+        { label: "Bajas confirmadas", value: 795, color: "#a33b3b" },
+        { label: "Otro estatus", value: 282, color: "#b5c0cb" }
+      ];
+      var total = segmentos.reduce(function (s, d) { return s + d.value; }, 0);
+      var svg = document.getElementById("donut-chart");
+      var wrap = document.getElementById("donut-wrap");
+      var tooltip = document.getElementById("donut-tooltip");
+      var legend = document.getElementById("donut-legend");
+      var cx = 70, cy = 70, r = 50, strokeW = 20;
+      var C = 2 * Math.PI * r;
+      var offset = 0;
+
+      var centerVal = el("text", { x: cx, y: cy - 4, "text-anchor": "middle", "font-size": 26, "font-weight": 700, fill: "#172033" });
+      centerVal.textContent = fmt(segmentos[0].value);
+      var centerLbl = el("text", { x: cx, y: cy + 12, "text-anchor": "middle", "font-size": 13, fill: "#5d6b7c" });
+      centerLbl.textContent = "activos al corte";
+
+      segmentos.forEach(function (d) {
+        var frac = d.value / total;
+        var dash = frac * C;
+        var circle = el("circle", {
+          cx: cx, cy: cy, r: r, fill: "none", stroke: d.color, "stroke-width": strokeW,
+          "stroke-dasharray": dash.toFixed(2) + " " + (C - dash).toFixed(2),
+          "stroke-dashoffset": (-offset).toFixed(2),
+          transform: "rotate(-90 " + cx + " " + cy + ")",
+          style: "cursor:pointer"
+        });
+        svg.appendChild(circle);
+        offset += dash;
+
+        circle.addEventListener("pointerenter", function (ev) {
+          circle.setAttribute("stroke-width", strokeW + 3);
+          showTip(d, ev);
+        });
+        circle.addEventListener("pointermove", function (ev) {
+          showTip(d, ev);
+        });
+        circle.addEventListener("pointerleave", function () {
+          circle.setAttribute("stroke-width", strokeW);
+          hideTip();
+        });
+
+        var row = document.createElement("div");
+        row.className = "flex items-center gap-1.5";
+        row.innerHTML =
+          '<span class="w-2.5 h-2.5 rounded-full shrink-0" style="background:' + d.color + '"></span>' +
+          '<span class="text-portal-muted">' + d.label + "</span>" +
+          '<span class="data-number font-semibold text-portal-ink ml-auto pl-2">' + fmt(d.value) + "</span>";
+        legend.appendChild(row);
+      });
+      svg.appendChild(centerVal);
+      svg.appendChild(centerLbl);
+
+      var qEl = tooltip.querySelector('[data-role="label"]');
+      var vEl = tooltip.querySelector('[data-role="value"]');
+      function showTip(d, ev) {
+        qEl.textContent = d.label;
+        vEl.textContent = fmt(d.value) + " (" + Math.round((d.value / total) * 100) + "%)";
+        posicionarTooltip(tooltip, wrap, ev);
+      }
+      function hideTip() {
+        tooltip.classList.add("hidden");
+      }
+    })();
+
+    // =======================================================================
+    // Medidores compactos — mismo patrón: track completo + relleno + tick de
+    // referencia, con hover. Reusa la idea del dot-plot/meter ya usado en
+    // Reportes, en versión de una sola barra.
+    // =======================================================================
+    function construirMedidor(svgId, tooltipId, opts) {
+      var ns = "http://www.w3.org/2000/svg";
+      function el(tag, attrs) {
+        var e = document.createElementNS(ns, tag);
+        for (var k in attrs) e.setAttribute(k, attrs[k]);
+        return e;
+      }
+      function fmt(v) {
+        return v.toLocaleString("es-MX");
+      }
+      var svg = document.getElementById(svgId);
+      var tooltip = document.getElementById(tooltipId);
+      var W = 260, H = 70, padL = 4, padR = 4, trackY = 40, trackH = 14;
+      var innerW = W - padL - padR;
+      var pct = opts.max ? opts.value / opts.max : 0;
+
+      svg.appendChild(el("rect", { x: padL, y: trackY, width: innerW, height: trackH, rx: 4, fill: "#e8edf2" }));
+      var fillW = Math.max(innerW * pct, pct > 0 ? 4 : 0);
+      // Ancho final fijo desde el inicio; la entrada anima con transform
+      // scaleX (GPU, sin recalcular layout) en vez de animar el atributo
+      // width — hallazgo real del hook `impeccable` (layout-transition),
+      // corregido antes de dar el medidor por bueno.
+      var fillRect = el("rect", {
+        x: padL, y: trackY, width: fillW.toFixed(2), height: trackH, rx: 4, fill: "#044d98",
+        style: "transform-box: fill-box; transform-origin: left center; transform: scaleX(0); transition: transform 700ms ease-out"
+      });
+      svg.appendChild(fillRect);
+
+      var valLbl = el("text", { x: padL, y: trackY - 10, "font-size": 23, "font-weight": 700, fill: "#172033" });
+      valLbl.textContent = fmt(opts.value);
+      svg.appendChild(valLbl);
+      var pctLbl = el("text", { x: W - padR, y: trackY - 10, "text-anchor": "end", "font-size": 15, "font-weight": 600, fill: "#044d98" });
+      pctLbl.textContent = Math.round(pct * 100) + "%";
+      svg.appendChild(pctLbl);
+      var maxLbl = el("text", { x: W - padR, y: trackY + trackH + 14, "text-anchor": "end", "font-size": 12, fill: "#5d6b7c" });
+      maxLbl.textContent = "de " + fmt(opts.max);
+      svg.appendChild(maxLbl);
+
+      var hit = el("rect", { x: padL, y: trackY - 20, width: innerW, height: trackH + 34, fill: "transparent", style: "cursor:pointer" });
+      svg.appendChild(hit);
+      var wrap = document.getElementById(svgId + "-wrap") || svg.parentElement;
+      var qEl = tooltip.querySelector('[data-role="label"]');
+      var vEl = tooltip.querySelector('[data-role="value"]');
+      function show(ev) {
+        qEl.textContent = opts.label;
+        vEl.textContent = fmt(opts.value) + " de " + fmt(opts.max) + " (" + Math.round(pct * 100) + "%)";
+        posicionarTooltip(tooltip, wrap, ev);
+      }
+      hit.addEventListener("pointerenter", show);
+      hit.addEventListener("pointermove", show);
+      hit.addEventListener("pointerleave", function () {
+        tooltip.classList.add("hidden");
+      });
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          fillRect.style.transform = "scaleX(1)";
+        });
+      });
+    }
+
+    construirMedidor("meter-municipios", "meter-municipios-tooltip", {
+      label: "Municipios con chalecos activos", value: 27, max: 67
+    });
+    construirMedidor("meter-avance", "meter-avance-tooltip", {
+      label: "Encuestas frente a la referencia basada en lo logrado en 2025", value: 20634, max: 46586
+    });
+
+    (function construirPulsoTerritorial() {
+      var municipios = [{"m":"Cuauhtemoc","c":12,"a":false},{"m":"Delicias","c":13,"a":false},{"m":"Chihuahua","c":139,"a":false},{"m":"Juarez","c":55,"a":false},{"m":"Saucillo","c":5,"a":false},{"m":"Camargo","c":6,"a":false},{"m":"Allende","c":0,"a":false},{"m":"Jimenez","c":3,"a":false},{"m":"Balleza","c":3,"a":true},{"m":"Hidalgo Del Parral","c":0,"a":false},{"m":"Guachochi","c":7,"a":true},{"m":"La Cruz","c":0,"a":false},{"m":"Meoqui","c":4,"a":true},{"m":"Coronado","c":0,"a":false},{"m":"Ascension","c":3,"a":true},{"m":"Guerrero","c":5,"a":false},{"m":"Lopez","c":0,"a":false},{"m":"Julimes","c":2,"a":false},{"m":"Matamoros","c":1,"a":true},{"m":"Guadalupe Y Calvo","c":8,"a":false},{"m":"Guazapares","c":0,"a":false},{"m":"Morelos","c":0,"a":false},{"m":"Namiquipa","c":5,"a":true},{"m":"Nuevo Casas Grandes","c":10,"a":false},{"m":"San Francisco De Conchos","c":0,"a":false},{"m":"Rosales","c":3,"a":true},{"m":"San Francisco Del Oro","c":0,"a":false},{"m":"Buenaventura","c":3,"a":true},{"m":"Urique","c":5,"a":true},{"m":"Madera","c":6,"a":false},{"m":"Ojinaga","c":4,"a":true},{"m":"Carichi","c":0,"a":false},{"m":"Galeana","c":0,"a":false},{"m":"Bocoyna","c":3,"a":false},{"m":"Ahumada","c":0,"a":false},{"m":"Gran Morelos","c":0,"a":false},{"m":"Casas Grandes","c":3,"a":true},{"m":"Aquiles Serdan","c":0,"a":false},{"m":"Satevo","c":3,"a":true},{"m":"Dr. Belisario Dominguez","c":0,"a":false},{"m":"Batopilas De Manuel Gomez Morin","c":0,"a":false},{"m":"Valle De Zaragoza","c":0,"a":false},{"m":"Santa Isabel","c":0,"a":false},{"m":"Cusihuiriachi","c":0,"a":false},{"m":"Aldama","c":0,"a":false},{"m":"Janos","c":0,"a":false},{"m":"Uruachi","c":1,"a":true},{"m":"Moris","c":0,"a":false},{"m":"Bachiniva","c":0,"a":false},{"m":"Rosario","c":0,"a":false},{"m":"Nonoava","c":0,"a":false},{"m":"San Francisco De Borja","c":0,"a":false},{"m":"Chinipas","c":0,"a":false},{"m":"Ignacio Zaragoza","c":0,"a":false},{"m":"Ocampo","c":1,"a":false},{"m":"Matachi","c":0,"a":false},{"m":"Temosachic","c":0,"a":false},{"m":"Riva Palacio","c":0,"a":false},{"m":"Santa Barbara","c":0,"a":false},{"m":"Gomez Farias","c":0,"a":false},{"m":"Praxedis G. Guerrero","c":0,"a":false},{"m":"Guadalupe","c":0,"a":false},{"m":"El Tule","c":0,"a":false},{"m":"Manuel Benavides","c":0,"a":false},{"m":"Coyame Del Sotol","c":0,"a":false},{"m":"Maguarichi","c":0,"a":false},{"m":"Huejotitan","c":0,"a":false}];
+      var grid = document.getElementById("territory-grid");
+      municipios.forEach(function (item) {
+        var button = document.createElement("button");
+        var shortName = item.m.replace(/\b(De|Del|La|Y)\b/gi, "").replace(/\s+/g, "").slice(0, 3).toUpperCase();
+        button.type = "button";
+        button.className = "territory-cell";
+        button.dataset.active = item.c > 0 ? "true" : "false";
+        button.dataset.alert = item.a ? "true" : "false";
+        button.setAttribute("role", "listitem");
+        button.setAttribute("aria-label", item.m + ": " + item.c + " chalecos activos" + (item.a ? ", requiere revisar reporte de encuestas" : ""));
+        button.title = item.m + " · " + item.c + " chalecos" + (item.a ? " · revisar encuestas" : "");
+        button.textContent = shortName;
+        grid.appendChild(button);
+      });
+    })();
+  </script>
+</body>
+</html>
